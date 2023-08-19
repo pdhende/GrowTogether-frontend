@@ -1,0 +1,78 @@
+* {
+  /* font-family: "Dancing Script", cursive;
+  font-family: "Satisfy", cursive; */
+  font-family: "Pacifico", cursive;
+}
+
+/* Variable declaration */
+:root {
+  --line-color: #ffc2c7;
+  --btn-color: #b6e5d8;
+}
+
+/*Common styling */
+.custom-btn {
+  background-color: var(--line-color);
+  color: white;
+  padding: 0.3% 3%;
+  margin-left: 1.5%;
+  border: 0.3rem solid white;
+  font-size: x-large;
+  display: inline-block;
+  cursor: pointer;
+  border-radius: 1.5rem;
+}
+
+/* Header styling */
+.header-color {
+  height: 3vh;
+  background-color: var(--line-color);
+}
+
+.app-logo {
+  margin-top: 0.5rem;
+  height: 12vh;
+  width: 25%;
+}
+
+/* Navigation styling */
+.nav-bar {
+  background-color: var(--line-color);
+  height: 8vh;
+}
+
+/* Home page styling */
+.home-img {
+  background-image: url("../images/hero_img.jpg");
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-position: inherit;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  height: 100vh;
+  width: 100%;
+  top: 20vh;
+  left: 0;
+  margin-top: 0%;
+  background: rgba(247, 242, 242, 0.3);
+  /* background: rgba(252, 249, 249, 0.459); */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.home-content {
+  position: absolute;
+  top: 50vh;
+  width: -webkit-fill-available;
+  /* left: 20vw; */
+  z-index: 1;
+}
