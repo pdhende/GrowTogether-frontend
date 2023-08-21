@@ -9,9 +9,9 @@ function Header() {
       <Container fluid>
         <Row className="header-color"></Row>
         <Row>
-          <div>
+          <Col>
             <img src={AppLogo} className="app-logo" />
-          </div>
+          </Col>
         </Row>
         <Row className="header-color"></Row>
       </Container>
