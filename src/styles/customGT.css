@@ -7,7 +7,7 @@
 /* Variable declaration */
 :root {
   --line-color: #ffc2c7;
-  --btn-color: #b6e5d8;
+  --btn-color: #4e9c86;
 }
 
 /*Common styling */
@@ -23,6 +23,14 @@
   border-radius: 1.5rem;
 }
 
+.custom-btn:hover,
+.custom-btn:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em;
+  transform: translateY(-0.25em);
+  background-color: var(--btn-color);
+  border: 0.3rem solid white;
+}
+
 /* Header styling */
 .header-color {
   height: 3vh;
@@ -30,9 +38,8 @@
 }
 
 .app-logo {
-  margin-top: 0.5rem;
   height: 12vh;
-  width: 25%;
+  width: 40%;
 }
 
 /* Navigation styling */
@@ -57,11 +64,10 @@
   position: absolute;
   height: 100vh;
   width: 100%;
-  top: 20vh;
+  top: 18vh;
   left: 0;
   margin-top: 0%;
   background: rgba(247, 242, 242, 0.3);
-  /* background: rgba(252, 249, 249, 0.459); */
   color: white;
   display: flex;
   align-items: center;
@@ -71,8 +77,13 @@
 
 .home-content {
   position: absolute;
-  top: 50vh;
+  top: 45vh;
   width: -webkit-fill-available;
-  /* left: 20vw; */
-  z-index: 1;
+  left: 30vw;
+}
+
+.home-content-btn {
+  position: absolute;
+  width: -webkit-fill-available;
+  top: 60vh;
 }
