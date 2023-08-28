@@ -21,8 +21,6 @@ function SignUp() {
   };
 
   const handleFormSubmit = async (event) => {
-    // const [errors, setErrors] = useState([]);
-
     event.preventDefault();
 
     // check if form has everything (as per react-bootstrap docs)
@@ -39,18 +37,16 @@ function SignUp() {
       password: "",
     });
 
-    // setErrors([]);
     const params = new FormData(event.target);
     axios
       .post("http://localhost:3000/users.json", params)
       .then((response) => {
         console.log(response.data);
         event.target.reset();
-        window.location.href = "/"; // Change this to hide a modal, redirect to a specific page, etc.
+        window.location.href = "/"; // Change this to redirect to a specific page, likely the dashboard.
       })
       .catch((error) => {
         console.log(error.response.data.errors);
-        // setErrors(error.response.data.errors);
       });
   };
 
