@@ -1,4 +1,5 @@
 import React from "react";
+import axios from "axios";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useState } from "react";
 
@@ -20,6 +21,8 @@ function SignUp() {
   };
 
   const handleFormSubmit = async (event) => {
+    // const [errors, setErrors] = useState([]);
+
     event.preventDefault();
 
     // check if form has everything (as per react-bootstrap docs)
@@ -35,29 +38,31 @@ function SignUp() {
       email: "",
       password: "",
     });
+
+    // setErrors([]);
+    const params = new FormData(event.target);
+    axios
+      .post("http://localhost:3000/users.json", params)
+      .then((response) => {
+        console.log(response.data);
+        event.target.reset();
+        window.location.href = "/"; // Change this to hide a modal, redirect to a specific page, etc.
+      })
+      .catch((error) => {
+        console.log(error.response.data.errors);
+        // setErrors(error.response.data.errors);
+      });
   };
 
   return (
     <>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Form.Group>
-          <Form.Label htmlFor="firstname">First Name</Form.Label>
+          <Form.Label htmlFor="name">Your Name</Form.Label>
           <Form.Control
             type="text"
-            placeholder="First Name"
-            name="firstname"
-            onChange={handleInputChange}
-            value={userFormData.firstname}
-            required
-          />
-        </Form.Group>
-
-        <Form.Group>
-          <Form.Label htmlFor="lastname">Last Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Last Name"
-            name="lastname"
+            placeholder="Your Name"
+            name="name"
             onChange={handleInputChange}
             value={userFormData.lastname}
             required
