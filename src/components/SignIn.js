@@ -19,8 +19,6 @@ function SignIn() {
   };
 
   const handleFormSubmit = async (event) => {
-    // event.preventDefault();
-
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -35,7 +33,6 @@ function SignIn() {
     });
 
     event.preventDefault();
-    // setErrors([]);
     const params = new FormData(event.target);
     axios
       .post("http://localhost:3000/sessions.json", params)
@@ -44,11 +41,10 @@ function SignIn() {
         axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
         localStorage.setItem("jwt", response.data.jwt);
         event.target.reset();
-        window.location.href = "/"; // Change this to hide a modal, redirect to a specific page, etc.
+        window.location.href = "/"; // Change this to redirect to dashboard page.
       })
       .catch((error) => {
         console.log(error.response);
-        // setErrors(["Invalid email or password"]);
       });
   };
 
