@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Container, Nav, Navbar } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import MilestoneTracker from "../pages/MilestoneTracker";
+import { LogoutLink } from "./LogoutLink";
 
 function Navigation() {
   return (
@@ -10,6 +11,9 @@ function Navigation() {
         <Nav>
           <Nav.Link href="#milestone" as={Link} to="/milestoneTracker">
             Milestone Tracker
+          </Nav.Link>
+          <Nav.Link>
+            <LogoutLink />
           </Nav.Link>
         </Nav>
       </Navbar>
