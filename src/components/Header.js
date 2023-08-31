@@ -14,6 +14,9 @@ function Header() {
           </Col>
         </Row>
         <Row className="header-color"></Row>
+        <Row>
+          <Navigation />
+        </Row>
       </Container>
     </>
   );
