@@ -6,6 +6,7 @@ import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
 import { Row, Col, Button } from "react-bootstrap";
 import { Navbar, Nav, Container, Modal, Tab } from "react-bootstrap";
+import { ChildrenIndex } from "../components/ChildrenIndex";
 
 function HomePage() {
   const [showModal, setShowModal] = useState(false);
@@ -29,45 +30,45 @@ function HomePage() {
           >
             A Parent Friendly App
           </Row>
-          <Row className="home-content-btn">
-            <Col>
-              <Button
-                className="custom-btn"
-                onClick={() => {
-                  setShowModal(true);
-                  setFormType("signIn");
-                }}
-              >
-                Sign In
-              </Button>
-              <Button
-                className="custom-btn btn-rounded"
-                onClick={() => {
-                  setShowModal(true);
-                  setFormType("signOut");
-                }}
-              >
-                Sign Up
-              </Button>
-            </Col>
-          </Row>
+          {localStorage.jwt === undefined ? (
+            <>
+              <Row className="home-content-btn">
+                <Col>
+                  <Button
+                    className="custom-btn"
+                    onClick={() => {
+                      setShowModal(true);
+                      setFormType("signIn");
+                    }}
+                  >
+                    Sign In
+                  </Button>
+                  <Button
+                    className="custom-btn btn-rounded"
+                    onClick={() => {
+                      setShowModal(true);
+                      setFormType("signOut");
+                    }}
+                  >
+                    Sign Up
+                  </Button>
+                </Col>
+              </Row>
+            </>
+          ) : (
+            <>
+              <ChildrenIndex />
+            </>
+          )}
         </section>
         <Footer />
       </div>
 
       {/* set modal data up */}
 
-      <Modal
-        show={showModal}
-        className="modal-xl"
-        onHide={() => setShowModal(false)}
-      >
+      <Modal show={showModal} className="modal-xl" onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
-          {formType === "signIn" ? (
-            <Modal.Title>Sign In</Modal.Title>
-          ) : (
-            <Modal.Title>Sign Up</Modal.Title>
-          )}
+          {formType === "signIn" ? <Modal.Title>Sign In</Modal.Title> : <Modal.Title>Sign Up</Modal.Title>}
         </Modal.Header>
         <Modal.Body>
           {formType === "signIn" ? (
