@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import MilestoneTracker from "./pages/MilestoneTracker";
 import "./App.css";
-// import { ChildrenIndex } from "./components/ChildrenIndex";
 
 function App() {
   return (
@@ -15,9 +14,6 @@ function App() {
         <Routes>
           <Route path="/milestoneTracker" element={<MilestoneTracker />} />
         </Routes>
-        {/* <Routes>
-          <Route path="/children" element={<ChildrenIndex />} />
-        </Routes> */}
       </Router>
     </div>
   );

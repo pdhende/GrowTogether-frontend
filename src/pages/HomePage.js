@@ -6,7 +6,7 @@ import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
 import { Row, Col, Button } from "react-bootstrap";
 import { Navbar, Nav, Container, Modal, Tab } from "react-bootstrap";
-import { ChildrenIndex } from "../components/ChildrenIndex";
+import { UserDashboard } from "../components/UserDashboard";
 
 function HomePage() {
   const [showModal, setShowModal] = useState(false);
@@ -21,17 +21,17 @@ function HomePage() {
           <div className="overlay"></div>
         </section>
         <section>
-          <Row
-            className="home-content"
-            style={{
-              color: "#0C6980",
-              fontSize: " 4rem",
-            }}
-          >
-            A Parent Friendly App
-          </Row>
           {localStorage.jwt === undefined ? (
             <>
+              <Row
+                className="home-content"
+                style={{
+                  color: "#0C6980",
+                  fontSize: "4rem",
+                }}
+              >
+                A Parent Friendly App
+              </Row>
               <Row className="home-content-btn">
                 <Col>
                   <Button
@@ -57,7 +57,15 @@ function HomePage() {
             </>
           ) : (
             <>
-              <ChildrenIndex />
+              <Row
+                className="home-content"
+                style={{
+                  color: "#008080",
+                  fontSize: "10rem",
+                }}
+              >
+                <UserDashboard />
+              </Row>
             </>
           )}
         </section>
