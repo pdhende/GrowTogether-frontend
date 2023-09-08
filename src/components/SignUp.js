@@ -1,14 +1,16 @@
 import React from "react";
+import axios from "axios";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useState } from "react";
 
 function SignUp() {
   // set initial form state
   const [userFormData, setUserFormData] = useState({
-    firstname: "",
+    // firstname: "",
+    // lastname: "",
+    name: "",
     email: "",
     password: "",
-    role: "",
   });
   // set state for form validation
   const [validated] = useState(false);
@@ -29,9 +31,20 @@ function SignUp() {
       event.stopPropagation();
     }
 
+    const params = new FormData(event.target);
+    axios
+      .post("http://localhost:3000/users.json", params)
+      .then((response) => {
+        console.log(response.data);
+        event.target.reset();
+        window.location.href = "/"; // Change this to redirect to Login page (or if we can log them in automatically that would be good, then send them to their dashboard).
+      })
+      .catch((error) => {
+        console.log(error.response.data.errors);
+      });
+
     setUserFormData({
-      firstname: "",
-      lastname: "",
+      name: "",
       email: "",
       password: "",
     });
@@ -41,25 +54,13 @@ function SignUp() {
     <>
       <Form noValidate validated={validated} onSubmit={handleFormSubmit}>
         <Form.Group>
-          <Form.Label htmlFor="firstname">First Name</Form.Label>
+          <Form.Label htmlFor="name">Your Name</Form.Label>
           <Form.Control
             type="text"
-            placeholder="First Name"
-            name="firstname"
+            placeholder="Your Name"
+            name="name"
             onChange={handleInputChange}
-            value={userFormData.firstname}
-            required
-          />
-        </Form.Group>
-
-        <Form.Group>
-          <Form.Label htmlFor="lastname">Last Name</Form.Label>
-          <Form.Control
-            type="text"
-            placeholder="Last Name"
-            name="lastname"
-            onChange={handleInputChange}
-            value={userFormData.lastname}
+            value={userFormData.name}
             required
           />
         </Form.Group>
