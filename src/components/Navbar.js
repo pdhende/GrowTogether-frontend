@@ -12,9 +12,15 @@ function Navigation() {
           <Nav.Link href="#milestone" as={Link} to="/milestoneTracker">
             Milestone Tracker
           </Nav.Link>
-          <Nav.Link>
-            <LogoutLink />
-          </Nav.Link>
+          {localStorage.jwt === undefined ? (
+            <></>
+          ) : (
+            <>
+              <Nav.Link>
+                <LogoutLink />
+              </Nav.Link>
+            </>
+          )}
         </Nav>
       </Navbar>
     </>
