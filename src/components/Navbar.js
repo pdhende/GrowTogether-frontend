@@ -10,19 +10,19 @@ function Navigation() {
         <Navbar className="nav-bar" expand="lg">
           <Nav>
             <Nav.Link href="#home" as={Link} to="/">
-              Home
+              Home |
             </Nav.Link>
             <Nav.Link href="#milestone" as={Link} to="/milestoneTracker">
-              Milestone Tracker
+              Milestone Tracker |
             </Nav.Link>
             <Nav.Link href="#resources" as={Link} to="/resources">
-              Resources
+              Resources |
             </Nav.Link>
             <Nav.Link href="#reminders" as={Link} to="/reminders">
-              Reminders
+              Reminders |
             </Nav.Link>
             <Nav.Link href="#photos" as={Link} to="/photos">
-              Photo Album
+              Photo Album |
             </Nav.Link>
             <Nav.Link href="#logout" onClick={auth.logout}>
               Logout

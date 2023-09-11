@@ -2,7 +2,8 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import MilestoneTracker from "./pages/MilestoneTracker";
-import { LogoutLink } from "./components/LogoutLink";
+// import { LogoutLink } from "./components/LogoutLink";
+import { UserDashboard } from "./components/UserDashboard";
 import "./App.css";
 
 function App() {
@@ -11,8 +12,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="*" element={<HomePage />} />
+          <Route path="/dashboard" element={<UserDashboard />} />
           <Route path="/milestoneTracker" element={<MilestoneTracker />} />
-          {/* <Route path="/logout" element={<LogoutLink />} /> */}
         </Routes>
       </Router>
     </div>

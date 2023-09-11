@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Header from "../components/Header";
 import Card from "react-bootstrap/Card";
 import { Col, Row } from "react-bootstrap";
@@ -31,7 +31,7 @@ function MilestoneTracker() {
           </Row>
           <Row>
             {childrenData.map((child) => (
-              <Col md={3} key={child.id}>
+              <Col md={3} style={{ marginRight: "5%" }} key={child.id}>
                 <ChildProfile
                   childName={child.name}
                   dob={child.dob}

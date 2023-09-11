@@ -22,7 +22,6 @@ function ChildProfile(props) {
   };
 
   const submitForm = async (event) => {
-    console.log("before axios call");
     // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -31,13 +30,13 @@ function ChildProfile(props) {
     }
 
     event.preventDefault();
-    console.log("before axios call");
     axios
       .post("http://localhost:3000/milestones.json", msFormData)
       .then((response) => {
-        console.log("after axios call");
-        console.log(response);
-        window.location.href("/");
+        axios.defaults.headers.common["Authorization"] =
+          "Bearer " + response.data.jwt;
+        localStorage.setItem("jwt", response.data.jwt);
+        window.location.href("/dashboard");
       })
       .catch((error) => {
         console.log(error.response);
@@ -54,21 +53,21 @@ function ChildProfile(props) {
   return (
     <>
       <div>
-        <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src={childProfile} />
+        <Card className="custom-card">
+          <Card.Img className="child-img" variant="top" src={childProfile} />
           <Card.Body>
             <Card.Title>{childName}</Card.Title>
             <Card.Text>{dob}</Card.Text>
           </Card.Body>
           <Card.Body>
             <Button
-              className="custom-btn btn-rounded"
+              className="custom-btn custom-all-btn btn-rounded"
               onClick={() => setShowModal(true)}
             >
               Add Milestone
             </Button>
             <Button
-              className="custom-btn btn-rounded"
+              className="custom-btn custom-all-btn btn-rounded"
               onClick={() => {
                 <AllMilestones />;
               }}

@@ -6,6 +6,7 @@ import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
 import { Row, Col, Button } from "react-bootstrap";
 import { Navbar, Nav, Container, Modal, Tab } from "react-bootstrap";
+import { UserDashboard } from "../components/UserDashboard";
 
 function HomePage() {
   const [showModal, setShowModal] = useState(false);
@@ -20,54 +21,62 @@ function HomePage() {
           <div className="overlay"></div>
         </section>
         <section>
-          <Row
-            className="home-content"
-            style={{
-              color: "#0C6980",
-              fontSize: " 4rem",
-            }}
-          >
-            A Parent Friendly App
-          </Row>
-          <Row className="home-content-btn">
-            <Col>
-              <Button
-                className="custom-btn"
-                onClick={() => {
-                  setShowModal(true);
-                  setFormType("signIn");
+          {localStorage.jwt === undefined ? (
+            <>
+              <Row
+                className="home-content"
+                style={{
+                  color: "#0C6980",
+                  fontSize: "4rem",
                 }}
               >
-                Sign In
-              </Button>
-              <Button
-                className="custom-btn btn-rounded"
-                onClick={() => {
-                  setShowModal(true);
-                  setFormType("signOut");
+                A Parent Friendly App
+              </Row>
+              <Row className="home-content-btn">
+                <Col>
+                  <Button
+                    className="custom-btn"
+                    onClick={() => {
+                      setShowModal(true);
+                      setFormType("signIn");
+                    }}
+                  >
+                    Sign In
+                  </Button>
+                  <Button
+                    className="custom-btn btn-rounded"
+                    onClick={() => {
+                      setShowModal(true);
+                      setFormType("signOut");
+                    }}
+                  >
+                    Sign Up
+                  </Button>
+                </Col>
+              </Row>
+            </>
+          ) : (
+            <>
+              <Row
+                className="home-content"
+                style={{
+                  color: "#008080",
+                  fontSize: "10rem",
                 }}
               >
-                Sign Up
-              </Button>
-            </Col>
-          </Row>
+                <UserDashboard />
+              </Row>
+            </>
+          )}
         </section>
         <Footer />
       </div>
 
       {/* set modal data up */}
 
-      <Modal
-        show={showModal}
-        className="modal-xl"
-        onHide={() => setShowModal(false)}
-      >
+      <Modal show={showModal} className="modal-xl" onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
-          {formType === "signIn" ? (
-            <Modal.Title>Sign In</Modal.Title>
-          ) : (
-            <Modal.Title>Sign Up</Modal.Title>
-          )}
+          {formType === "signIn" ? <Modal.Title>Sign In</Modal.Title> : <Modal.Title>Sign Up</Modal.Title>}
         </Modal.Header>
         <Modal.Body>
           {formType === "signIn" ? (
