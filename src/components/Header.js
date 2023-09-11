@@ -12,11 +12,14 @@ function Header() {
           <Col>
             <img src={AppLogo} className="app-logo" />
           </Col>
-          <Col>
+          {/* <Col>
             <Navigation />
-          </Col>
+          </Col> */}
         </Row>
         <Row className="header-color"></Row>
+        <Row>
+          <Navigation />
+        </Row>
       </Container>
     </>
   );

@@ -8,12 +8,4 @@ export function LogoutLink() {
     localStorage.removeItem("jwt");
     window.location.href = "/";
   };
-
-  return (
-    <Nav>
-      <Nav.Link href="/" onClick={handleClick}>
-        Logout
-      </Nav.Link>
-    </Nav>
-  );
 }

@@ -6,10 +6,9 @@ import { useState } from "react";
 function SignUp() {
   // set initial form state
   const [userFormData, setUserFormData] = useState({
-    firstname: "",
+    name: "",
     email: "",
     password: "",
-    role: "",
   });
   // set state for form validation
   const [validated] = useState(false);
@@ -30,24 +29,22 @@ function SignUp() {
       event.stopPropagation();
     }
 
-    setUserFormData({
-      firstname: "",
-      lastname: "",
-      email: "",
-      password: "",
-    });
-
     const params = new FormData(event.target);
     axios
       .post("http://localhost:3000/users.json", params)
       .then((response) => {
-        console.log(response.data);
         event.target.reset();
-        window.location.href = "/"; // Change this to redirect to Login page (or if we can log them in automatically that would be good, then send them to their dashboard).
+        window.location.href = "/dashboard"; // Change this to redirect to Login page (or if we can log them in automatically that would be good, then send them to their dashboard).
       })
       .catch((error) => {
         console.log(error.response.data.errors);
       });
+
+    setUserFormData({
+      name: "",
+      email: "",
+      password: "",
+    });
   };
 
   return (
@@ -60,7 +57,7 @@ function SignUp() {
             placeholder="Your Name"
             name="name"
             onChange={handleInputChange}
-            value={userFormData.lastname}
+            value={userFormData.name}
             required
           />
         </Form.Group>

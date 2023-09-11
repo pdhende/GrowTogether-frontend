@@ -26,19 +26,14 @@ function SignIn() {
       event.stopPropagation();
     }
 
-    setUserFormData({
-      username: "",
-      email: "",
-      password: "",
-    });
-
     event.preventDefault();
     const params = new FormData(event.target);
     axios
       .post("http://localhost:3000/sessions.json", params)
       .then((response) => {
-        console.log(response.data);
-        axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
+        // console.log(response.data);
+        axios.defaults.headers.common["Authorization"] =
+          "Bearer " + response.data.jwt;
         localStorage.setItem("jwt", response.data.jwt);
         event.target.reset();
         window.location.href = "/"; // Change this to redirect to dashboard page.
@@ -46,6 +41,12 @@ function SignIn() {
       .catch((error) => {
         console.log(error.response);
       });
+
+    setUserFormData({
+      username: "",
+      email: "",
+      password: "",
+    });
   };
 
   return (

@@ -1,7 +1,7 @@
 * {
-  /* font-family: "Dancing Script", cursive;
-  font-family: "Satisfy", cursive; */
-  font-family: "Pacifico", cursive;
+  /* font-family: "Dancing Script", cursive;*/
+  /* font-family: "Satisfy", cursive; */
+  font-family: "Maven Pro", sans-serif;
 }
 
 /* Variable declaration */
@@ -31,6 +31,13 @@
   border: 0.3rem solid white;
 }
 
+.custom-all-btn {
+  font-size: medium;
+  background-color: white;
+  color: #4e9c86;
+  border: 0.1rem solid var(--btn-color);
+}
+
 /* Header styling */
 .header-color {
   height: 3vh;
@@ -44,8 +51,13 @@
 
 /* Navigation styling */
 .nav-bar {
-  background-color: var(--line-color);
-  height: 8vh;
+  /* background-color: var(--line-color); */
+  font-family: "Maven Pro", sans-serif;
+  font-size: 1.2rem;
+  z-index: 1;
+  width: 100%;
+  justify-content: center;
+  /* border-bottom: 0.1rem dashed var(--btn-color); */
 }
 
 /* Home page styling */
@@ -64,7 +76,7 @@
   position: absolute;
   height: 100vh;
   width: 100%;
-  top: 18vh;
+  top: 25vh;
   left: 0;
   margin-top: 0%;
   background: rgba(247, 242, 242, 0.3);
@@ -86,4 +98,18 @@
   position: absolute;
   width: -webkit-fill-available;
   top: 60vh;
+}
+
+/* Milestone tracker page - Cards styling */
+.custom-card {
+  width: 18rem;
+  background-color: #f8ffca;
+  border: 0.2rem solid #b6e5d8;
+}
+
+.child-img {
+  width: 150px;
+  height: 150px;
+  align-self: center;
+  margin-top: 5%;
 }
