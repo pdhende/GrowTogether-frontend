@@ -7,6 +7,7 @@ import AllMilestones from "./AllMilestones";
 function ChildProfile(props) {
   const { childName, dob, childId, childProfile } = props;
   const [showModal, setShowModal] = useState(false);
+  const [showMSComp, setShowMSComp] = useState(false);
   const [msFormData, setMsFormData] = useState({
     child_id: childId,
     childProfile: "",
@@ -52,34 +53,35 @@ function ChildProfile(props) {
   };
   return (
     <>
-      <div>
-        <Card className="custom-card">
-          <Card.Img className="child-img" variant="top" src={childProfile} />
-          <Card.Body>
-            <Card.Title>{childName}</Card.Title>
-            <Card.Text>{dob}</Card.Text>
-          </Card.Body>
-          <Card.Body>
-            <Button
-              className="custom-btn custom-all-btn btn-rounded"
-              onClick={() => setShowModal(true)}
-            >
-              Add Milestone
-            </Button>
-            <Button
-              className="custom-btn custom-all-btn btn-rounded"
-              onClick={() => {
-                <AllMilestones />;
-              }}
-            >
-              View All Milestones
-            </Button>
-          </Card.Body>
-        </Card>
-      </div>
+      {!showMSComp && <AllMilestones /> ? (
+        <div>
+          <Card className="custom-card">
+            <Card.Img className="child-img" variant="top" src={childProfile} />
+            <Card.Body>
+              <Card.Title>{childName}</Card.Title>
+              <Card.Text>{dob}</Card.Text>
+            </Card.Body>
+            <Card.Body>
+              <Button
+                className="custom-btn custom-all-btn btn-rounded"
+                onClick={() => setShowModal(true)}
+              >
+                Add Milestone
+              </Button>
+              <Button
+                className="custom-btn custom-all-btn btn-rounded"
+                onClick={() => setShowMSComp(true)}
+              >
+                View All Milestones
+              </Button>
+            </Card.Body>
+          </Card>
+        </div>
+      ) : (
+        <AllMilestones childId={childId} />
+      )}
 
       {/* set modal data up */}
-
       <Modal
         show={showModal}
         className="modal-xl"

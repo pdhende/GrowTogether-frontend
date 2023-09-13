@@ -6,7 +6,8 @@ import SignIn from "../components/SignIn";
 import SignUp from "../components/SignUp";
 import { Row, Col, Button } from "react-bootstrap";
 import { Navbar, Nav, Container, Modal, Tab } from "react-bootstrap";
-import { UserDashboard } from "../components/UserDashboard";
+import auth from "../utils/auth";
+import { UserDashboard } from "../components/UserDashboard_orig";
 
 function HomePage() {
   const [showModal, setShowModal] = useState(false);
@@ -21,17 +22,9 @@ function HomePage() {
           <div className="overlay"></div>
         </section>
         <section>
+          <Row className="home-content">A Parent Friendly App</Row>
           {localStorage.jwt === undefined ? (
             <>
-              <Row
-                className="home-content"
-                style={{
-                  color: "#0C6980",
-                  fontSize: "4rem",
-                }}
-              >
-                A Parent Friendly App
-              </Row>
               <Row className="home-content-btn">
                 <Col>
                   <Button
@@ -60,23 +53,36 @@ function HomePage() {
               <Row
                 className="home-content"
                 style={{
-                  color: "#008080",
-                  fontSize: "10rem",
+                  width: "60%",
+                  top: "65vh",
+                  left: "21vw",
+                  fontSize: "1.5rem",
+                  padding: "1%",
                 }}
               >
-                <UserDashboard />
+                Keep track of your children's milestones, set reminders to
+                important meetings, search for reliable resources and save photo
+                memories of your kids.
               </Row>
             </>
           )}
         </section>
-        <Footer />
+        {/* <Footer /> */}
       </div>
 
       {/* set modal data up */}
 
-      <Modal show={showModal} className="modal-xl" onHide={() => setShowModal(false)}>
+      <Modal
+        show={showModal}
+        className="modal-xl"
+        onHide={() => setShowModal(false)}
+      >
         <Modal.Header closeButton>
-          {formType === "signIn" ? <Modal.Title>Sign In</Modal.Title> : <Modal.Title>Sign Up</Modal.Title>}
+          {formType === "signIn" ? (
+            <Modal.Title>Sign In</Modal.Title>
+          ) : (
+            <Modal.Title>Sign Up</Modal.Title>
+          )}
         </Modal.Header>
         <Modal.Body>
           {formType === "signIn" ? (

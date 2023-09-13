@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";
 import MilestoneTracker from "./pages/MilestoneTracker";
 // import { LogoutLink } from "./components/LogoutLink";
-import { UserDashboard } from "./components/UserDashboard";
+import { UserDashboard } from "./pages/UserDashboard";
 import "./App.css";
 
 function App() {
