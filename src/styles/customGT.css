@@ -76,7 +76,7 @@
   position: absolute;
   height: 100vh;
   width: 100%;
-  top: 25vh;
+  top: 18vh;
   left: 0;
   margin-top: 0%;
   background: rgba(247, 242, 242, 0.3);
@@ -89,15 +89,38 @@
 
 .home-content {
   position: absolute;
-  top: 45vh;
-  width: -webkit-fill-available;
-  left: 30vw;
+  top: 48vh;
+  width: 50%;
+  left: 26vw;
+  border-radius: 25px;
+  border: 5px solid var(--btn-color);
+  background-color: white;
+  justify-content: center;
+  color: #0c6980;
+  font-size: 3rem;
 }
 
 .home-content-btn {
   position: absolute;
-  width: -webkit-fill-available;
-  top: 60vh;
+  width: 100%;
+  top: 65vh;
+}
+
+/* User Dashboard */
+
+.custom-container {
+  width: 100%;
+}
+
+.custom-col {
+  background-color: #fff0df;
+  border-radius: 3%;
+  margin: 1%;
+}
+
+.item {
+  background-color: lightblue;
+  border: 1px solid black;
 }
 
 /* Milestone tracker page - Cards styling */

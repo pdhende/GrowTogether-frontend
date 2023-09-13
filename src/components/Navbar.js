@@ -12,6 +12,9 @@ function Navigation() {
             <Nav.Link href="#home" as={Link} to="/">
               Home |
             </Nav.Link>
+            <Nav.Link href="#profile" as={Link} to="/dashboard">
+              Profile |
+            </Nav.Link>
             <Nav.Link href="#milestone" as={Link} to="/milestoneTracker">
               Milestone Tracker |
             </Nav.Link>

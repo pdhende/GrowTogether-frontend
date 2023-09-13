@@ -36,7 +36,7 @@ function SignIn() {
           "Bearer " + response.data.jwt;
         localStorage.setItem("jwt", response.data.jwt);
         event.target.reset();
-        window.location.href = "/"; // Change this to redirect to dashboard page.
+        window.location.href = "/dashboard"; // Change this to redirect to dashboard page.
       })
       .catch((error) => {
         console.log(error.response);
