@@ -2,12 +2,12 @@ import React from "react";
 import { Card, Button, Form, Modal } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
-import AllMilestones from "./AllMilestones";
+import MilestoneTracker from "../pages/MilestoneTracker";
 
 function ChildProfile(props) {
   const { childName, dob, childId, childProfile } = props;
   const [showModal, setShowModal] = useState(false);
-  const [showMSComp, setShowMSComp] = useState(false);
+  const [showAllMS, setShowAllMS] = useState(false);
   const [msFormData, setMsFormData] = useState({
     child_id: childId,
     childProfile: "",
@@ -53,33 +53,33 @@ function ChildProfile(props) {
   };
   return (
     <>
-      {!showMSComp && <AllMilestones /> ? (
-        <div>
-          <Card className="custom-card">
-            <Card.Img className="child-img" variant="top" src={childProfile} />
-            <Card.Body>
-              <Card.Title>{childName}</Card.Title>
-              <Card.Text>{dob}</Card.Text>
-            </Card.Body>
-            <Card.Body>
-              <Button
-                className="custom-btn custom-all-btn btn-rounded"
-                onClick={() => setShowModal(true)}
-              >
-                Add Milestone
-              </Button>
-              <Button
-                className="custom-btn custom-all-btn btn-rounded"
-                onClick={() => setShowMSComp(true)}
-              >
-                View All Milestones
-              </Button>
-            </Card.Body>
-          </Card>
-        </div>
-      ) : (
-        <AllMilestones childId={childId} />
-      )}
+      <div>
+        <Card className="custom-card">
+          <Card.Img className="child-img" variant="top" src={childProfile} />
+          <Card.Body>
+            <Card.Title>{childName}</Card.Title>
+            <Card.Text>{dob}</Card.Text>
+          </Card.Body>
+          <Card.Body>
+            <Button
+              className="custom-btn custom-all-btn btn-rounded"
+              onClick={() => setShowModal(true)}
+            >
+              Add Milestone
+            </Button>
+            <Button
+              className="custom-btn custom-all-btn btn-rounded"
+              // onClick={() => setShowModal(true)}
+              onClick={() => {
+                setShowAllMS(true);
+                <MilestoneTracker showAllMS />;
+              }}
+            >
+              View All Milestones
+            </Button>
+          </Card.Body>
+        </Card>
+      </div>
 
       {/* set modal data up */}
       <Modal

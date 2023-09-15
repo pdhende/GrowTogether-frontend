@@ -6,10 +6,11 @@ import axios from "axios";
 import ChildProfile from "../components/ChildProfile";
 import AllMilestones from "../components/AllMilestones";
 
-function MilestoneTracker() {
+function MilestoneTracker(props) {
   const [childrenData, setChildrenData] = useState([]);
   const [error, setError] = useState("");
 
+  console.log(props.showAllMS);
   useEffect(() => {
     axios
       .get("http://localhost:3000/children.json")

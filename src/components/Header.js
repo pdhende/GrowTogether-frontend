@@ -17,9 +17,11 @@ function Header() {
           </Col> */}
         </Row>
         <Row className="header-color"></Row>
-        <Row>
-          <Navigation />
-        </Row>
+        {localStorage.jwt !== undefined ? (
+          <Row>
+            <Navigation />
+          </Row>
+        ) : null}
       </Container>
     </>
   );
