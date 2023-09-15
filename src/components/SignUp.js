@@ -8,7 +8,9 @@ function SignUp() {
   const [userFormData, setUserFormData] = useState({
     name: "",
     email: "",
+    profilePicURL: "",
     password: "",
+    // passwordConfirmation: "",
   });
   // set state for form validation
   const [validated] = useState(false);
@@ -34,7 +36,13 @@ function SignUp() {
       .post("http://localhost:3000/users.json", params)
       .then((response) => {
         event.target.reset();
-        window.location.href = "/dashboard"; // Change this to redirect to Login page (or if we can log them in automatically that would be good, then send them to their dashboard).
+        // Assuming your server responds with a JWT token upon successful signup
+        const jwt = response.data.jwt;
+
+        // Store the JWT token in localStorage
+        localStorage.setItem("jwt", jwt);
+
+        window.location.href = "/dashboard"; // Change this to redirect to the dashboard.
       })
       .catch((error) => {
         console.log(error.response.data.errors);
@@ -43,7 +51,9 @@ function SignUp() {
     setUserFormData({
       name: "",
       email: "",
+      profilePicURL: "",
       password: "",
+      // passwordConfirmation: "",
     });
   };
 
@@ -75,6 +85,18 @@ function SignUp() {
         </Form.Group>
 
         <Form.Group>
+          <Form.Label htmlFor="profilePicURL">Profile Picture URL</Form.Label>
+          <Form.Control
+            type="text"
+            placeholder="Profile Picture URL"
+            name="profilePicURL"
+            onChange={handleInputChange}
+            value={userFormData.profilePicURL}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group>
           <Form.Label htmlFor="password">Password</Form.Label>
           <Form.Control
             type="password"
@@ -85,6 +107,19 @@ function SignUp() {
             required
           />
         </Form.Group>
+
+        {/* <Form.Group>
+          <Form.Label htmlFor="password_confirmation">Password Confirmation</Form.Label>
+          <Form.Control
+            type="password_confirmation"
+            placeholder="Type your password agian"
+            name="password_confirmation"
+            onChange={handleInputChange}
+            value={userFormData.password}
+            required
+          />
+        </Form.Group> */}
+
         <Button
           type="submit"
           disabled={!(userFormData.email && userFormData.password)}
