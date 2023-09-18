@@ -12,9 +12,6 @@ function Header() {
           <Col>
             <img src={AppLogo} className="app-logo" />
           </Col>
-          {/* <Col>
-            <Navigation />
-          </Col> */}
         </Row>
         <Row className="header-color"></Row>
         {localStorage.jwt !== undefined ? (

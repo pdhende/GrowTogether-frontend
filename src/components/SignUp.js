@@ -41,7 +41,6 @@ function SignUp() {
 
         // Store the JWT token in localStorage
         localStorage.setItem("jwt", jwt);
-
         window.location.href = "/dashboard"; // Change this to redirect to the dashboard.
       })
       .catch((error) => {

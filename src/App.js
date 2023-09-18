@@ -5,6 +5,7 @@ import MilestoneTracker from "./pages/MilestoneTracker";
 // import { LogoutLink } from "./components/LogoutLink";
 import { UserDashboard } from "./pages/UserDashboard";
 import "./App.css";
+import AllMilestones from "./pages/AllMilestones";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="*" element={<HomePage />} />
           <Route path="/dashboard" element={<UserDashboard />} />
           <Route path="/milestoneTracker" element={<MilestoneTracker />} />
+          <Route path="/allMilestones" element={<AllMilestones />} />
         </Routes>
       </Router>
     </div>
