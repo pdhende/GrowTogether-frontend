@@ -2,12 +2,12 @@ import React from "react";
 import { Card, Button, Form, Modal } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
-import AllMilestones from "./AllMilestones";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function ChildProfile(props) {
+  const navigate = useNavigate();
   const { childName, dob, childId, childProfile } = props;
   const [showModal, setShowModal] = useState(false);
-  const [showMSComp, setShowMSComp] = useState(false);
   const [msFormData, setMsFormData] = useState({
     child_id: childId,
     childProfile: "",
@@ -34,10 +34,7 @@ function ChildProfile(props) {
     axios
       .post("http://localhost:3000/milestones.json", msFormData)
       .then((response) => {
-        axios.defaults.headers.common["Authorization"] =
-          "Bearer " + response.data.jwt;
-        localStorage.setItem("jwt", response.data.jwt);
-        window.location.href("/dashboard");
+        window.location.href("/milestoneTracker");
       })
       .catch((error) => {
         console.log(error.response);
@@ -51,35 +48,41 @@ function ChildProfile(props) {
       description: "",
     });
   };
+
+  const handleClick = () => {
+    const data = props;
+    navigate("/allMilestones", { state: { data } });
+  };
+
   return (
     <>
-      {!showMSComp && <AllMilestones /> ? (
-        <div>
-          <Card className="custom-card">
-            <Card.Img className="child-img" variant="top" src={childProfile} />
-            <Card.Body>
-              <Card.Title>{childName}</Card.Title>
-              <Card.Text>{dob}</Card.Text>
-            </Card.Body>
-            <Card.Body>
+      <div>
+        <Card className="custom-card">
+          <Card.Img className="child-img" variant="top" src={childProfile} />
+          <Card.Body>
+            <Card.Title>{childName}</Card.Title>
+            <Card.Text>{dob}</Card.Text>
+          </Card.Body>
+          <Card.Body>
+            <div>
               <Button
                 className="custom-btn custom-all-btn btn-rounded"
                 onClick={() => setShowModal(true)}
               >
                 Add Milestone
               </Button>
+            </div>
+            <div style={{ paddingTop: "5%" }}>
               <Button
                 className="custom-btn custom-all-btn btn-rounded"
-                onClick={() => setShowMSComp(true)}
+                onClick={handleClick}
               >
                 View All Milestones
               </Button>
-            </Card.Body>
-          </Card>
-        </div>
-      ) : (
-        <AllMilestones childId={childId} />
-      )}
+            </div>
+          </Card.Body>
+        </Card>
+      </div>
 
       {/* set modal data up */}
       <Modal

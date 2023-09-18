@@ -12,14 +12,13 @@ function Header() {
           <Col>
             <img src={AppLogo} className="app-logo" />
           </Col>
-          {/* <Col>
-            <Navigation />
-          </Col> */}
         </Row>
         <Row className="header-color"></Row>
-        <Row>
-          <Navigation />
-        </Row>
+        {localStorage.jwt !== undefined ? (
+          <Row>
+            <Navigation />
+          </Row>
+        ) : null}
       </Container>
     </>
   );
