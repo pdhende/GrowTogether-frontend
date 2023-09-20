@@ -7,7 +7,6 @@ import SignUp from "../components/SignUp";
 import { Row, Col, Button } from "react-bootstrap";
 import { Navbar, Nav, Container, Modal, Tab } from "react-bootstrap";
 import auth from "../utils/auth";
-import { UserDashboard } from "../components/UserDashboard_orig";
 
 function HomePage() {
   const [showModal, setShowModal] = useState(false);
@@ -60,9 +59,8 @@ function HomePage() {
                   padding: "1%",
                 }}
               >
-                Keep track of your children's milestones, set reminders to
-                important meetings, search for reliable resources and save photo
-                memories of your kids.
+                Keep track of your children's milestones, set reminders to important meetings, search for reliable
+                resources and save photo memories of your kids.
               </Row>
             </>
           )}
@@ -72,17 +70,9 @@ function HomePage() {
 
       {/* set modal data up */}
 
-      <Modal
-        show={showModal}
-        className="modal-xl"
-        onHide={() => setShowModal(false)}
-      >
+      <Modal show={showModal} className="modal-xl" onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
-          {formType === "signIn" ? (
-            <Modal.Title>Sign In</Modal.Title>
-          ) : (
-            <Modal.Title>Sign Up</Modal.Title>
-          )}
+          {formType === "signIn" ? <Modal.Title>Sign In</Modal.Title> : <Modal.Title>Sign Up</Modal.Title>}
         </Modal.Header>
         <Modal.Body>
           {formType === "signIn" ? (
