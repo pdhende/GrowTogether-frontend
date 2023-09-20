@@ -20,14 +20,13 @@ function MilestoneModal(props) {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+    } else {
+      window.location.href = "/allMilestones";
     }
 
     event.preventDefault();
     axios
-      .patch(
-        "http://localhost:3000/milestones/" + msProperty.id + ".json",
-        msProperty
-      )
+      .patch("http://localhost:3000/milestones/" + msProperty.id + ".json", msProperty)
       .then((response) => {
         window.location.href("/milestoneTracker");
       })
@@ -39,11 +38,7 @@ function MilestoneModal(props) {
   };
 
   return (
-    <Modal
-      show={showEditModal}
-      className="modal-xl"
-      onHide={() => setShowEditModal(false)}
-    >
+    <Modal show={showEditModal} className="modal-xl" onHide={() => setShowEditModal(false)}>
       <Modal.Header closeButton>
         <Modal.Title>Edit Milestone</Modal.Title>
       </Modal.Header>
