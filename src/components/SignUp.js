@@ -84,11 +84,11 @@ function SignUp() {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label htmlFor="profile_pic_URL">Profile Picture URL</Form.Label>
+          <Form.Label htmlFor="profilePicURL">Profile Picture URL</Form.Label>
           <Form.Control
             type="text"
             placeholder="Profile Picture URL"
-            name="profile_pic_URL"
+            name="profilePicURL"
             onChange={handleInputChange}
             value={userFormData.profilePicURL}
             required
