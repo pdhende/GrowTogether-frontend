@@ -31,11 +31,10 @@ function SignIn() {
     axios
       .post("http://localhost:3000/sessions.json", params)
       .then((response) => {
-        axios.defaults.headers.common["Authorization"] =
-          "Bearer " + response.data.jwt;
+        axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
         localStorage.setItem("jwt", response.data.jwt);
         event.target.reset();
-        window.location.href = "/"; // Change this to redirect to dashboard page.
+        window.location.href = "/dashboard"; // Change this to redirect to dashboard page.
       })
       .catch((error) => {
         console.log(error.response);
