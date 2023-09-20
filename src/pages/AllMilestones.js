@@ -28,11 +28,19 @@ function AllMilestones() {
   return (
     <>
       <Header />
-      <div style={{ backgroundColor: "#fff0df" }}>
+      <div style={{ backgroundImage: "linear-gradient(teal, pink)" }}>
         <section className="custom-container container">
-          <Row className="custom-col">
+          <Row
+            className="custom-col"
+            style={{
+              backgroundColor: "white",
+              border: "3px solid #4e9c86",
+              textAlign: "justify",
+              padding: "0.5%",
+            }}
+          >
             <Col md="3">
-              <img className="child-img" src={childProfile}></img>
+              <img className="child-img" alt={{ childName }} src={childProfile}></img>
             </Col>
             <Col style={{ textAlign: "justify", padding: "2%" }} md="9">
               <Row>
@@ -75,9 +83,7 @@ function AllMilestones() {
           ))}
         </section>
       </div>
-      {showEditModal === true ? (
-        <MilestoneModal milestone={msProperty} showEditModal={showEditModal} />
-      ) : null}
+      {showEditModal === true ? <MilestoneModal milestone={msProperty} showEditModal={showEditModal} /> : null}
     </>
   );
 }

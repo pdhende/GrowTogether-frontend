@@ -39,62 +39,69 @@ export function UserDashboard() {
     <>
       <div>
         <Header />
-        <section className="custom-container container">
-          <Row>
-            <Col className="custom-col" md="3">
-              <Row style={{ justifyContent: "center" }}>
-                <>
-                  {users.length > 0 ? (
-                    users.map((user, index) => (
-                      <div key={index}>
-                        <img
-                          src={user.profilePicURL}
-                          alt={`Profile Picture of ${user.name}`}
-                          style={{
-                            width: "200px",
-                            height: "200px",
-                            borderRadius: "50%",
-                            objectFit: "cover",
-                          }}
-                        />
-                        <Col>{user.name}</Col>
-                        <Col>{user.email}</Col>
-                      </div>
-                    ))
-                  ) : (
-                    <p>Loading...</p> // Show a loading message while data is being fetched
-                  )}
-                </>
-              </Row>
-              {/* <Row>
+        <div
+          style={{
+            backgroundImage: "linear-gradient(teal, pink)",
+            height: "auto", // Set your desired height
+          }}
+        >
+          <section className="custom-container container">
+            <Row>
+              <Col className="custom-col" md="3">
+                <Row style={{ justifyContent: "center" }}>
+                  <>
+                    {users.length > 0 ? (
+                      users.map((user, index) => (
+                        <div key={index}>
+                          <img
+                            src={user.profilePicURL}
+                            alt={`Profile Picture of ${user.name}`}
+                            style={{
+                              width: "200px",
+                              height: "200px",
+                              borderRadius: "50%",
+                              objectFit: "cover",
+                            }}
+                          />
+                          <Col>{user.name}</Col>
+                          <Col>{user.email}</Col>
+                        </div>
+                      ))
+                    ) : (
+                      <p>Loading...</p> // Show a loading message while data is being fetched
+                    )}
+                  </>
+                </Row>
+                {/* <Row>
                 <Col>username</Col>
               </Row> */}
-            </Col>
-            <Col md="8">
-              <Row>
-                <Col className="custom-col">
-                  <img src={childImg} style={{ width: "5rem" }}></img>Welcome! Add or edit children information here.
-                  <Button className="custom-btn custom-all-btn btn-rounded" onClick={handleShowCreateModal}>
-                    Add a Child
-                  </Button>
-                </Col>
-              </Row>
-              <Row>
-                <Col className="custom-col">
-                  <img src={reminderImg} style={{ width: "5rem" }}></img> Set Reminders to appointments and much more!
-                  <Button className="custom-btn custom-all-btn btn-rounded">Set reminders</Button>
-                </Col>
-              </Row>
-              <Row>
-                <Col className="custom-col">
-                  <img src={findImg} style={{ width: "5rem" }}></img>Find the best resources to get your questions
-                  answered!
-                  <Button className="custom-btn custom-all-btn btn-rounded">Find resources</Button>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-        </section>
+              </Col>
+              <Col md="8">
+                <Row>
+                  <Col className="custom-col">
+                    <img src={childImg} style={{ width: "5rem" }}></img>Welcome! Add or edit children information here.
+                    <Button className="custom-btn custom-all-btn btn-rounded" onClick={handleShowCreateModal}>
+                      Add a Child
+                    </Button>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col className="custom-col">
+                    <img src={reminderImg} style={{ width: "5rem" }}></img> Set Reminders to appointments and much more!
+                    <Button className="custom-btn custom-all-btn btn-rounded">Set reminders</Button>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col className="custom-col">
+                    <img src={findImg} style={{ width: "5rem" }}></img>Find the best resources to get your questions
+                    answered!
+                    <Button className="custom-btn custom-all-btn btn-rounded">Find resources</Button>
+                  </Col>
+                </Row>
+              </Col>
+            </Row>
+          </section>
+        </div>
 
         <Modal show={showCreateModal} onHide={handleClose}>
           <Modal.Header closeButton>
