@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable no-const-assign */
 import * as React from "react";
@@ -50,13 +51,14 @@ export function UserDashboard() {
                           src={user.profilePicURL}
                           alt={`Profile Picture of ${user.name}`}
                           style={{
-                            width: "100px", // Set the desired width here
-                            height: "100px", // Set the desired height here
-                            borderRadius: "50%", // Make it a circle by setting borderRadius to 50%
-                            objectFit: "cover", // Optional: Ensure the image covers the entire container
+                            width: "200px",
+                            height: "200px",
+                            borderRadius: "50%",
+                            objectFit: "cover",
                           }}
                         />
                         <Col>{user.name}</Col>
+                        <Col>{user.email}</Col>
                       </div>
                     ))
                   ) : (
