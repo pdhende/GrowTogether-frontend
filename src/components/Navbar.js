@@ -9,7 +9,7 @@ function Navigation() {
       <Navbar className="nav-bar" expand="lg">
         <Nav>
           <Nav.Link href="#home" as={Link} to="/">
-            Home |
+            About This App |
           </Nav.Link>
           <Nav.Link href="#profile" as={Link} to="/dashboard">
             User Dashboard |

@@ -22,25 +22,30 @@ function MilestoneTracker() {
     <>
       <div>
         <Header />
-        <section className="container">
-          <>
-            <Row>
-              <h1 style={{ textAlign: "left", marginLeft: "1em" }}></h1>
-            </Row>
-            <Row style={{ justifyContent: "center", marginTop: "2%" }}>
-              {childrenData.map((child) => (
-                <Col md={3} style={{ marginRight: "5%" }} key={child.id}>
-                  <ChildProfile
-                    childName={child.name}
-                    dob={child.dob}
-                    childId={child.id}
-                    childProfile={child.profile_image}
-                  />
-                </Col>
-              ))}
-            </Row>
-          </>
-        </section>
+        <div
+          style={{
+            backgroundImage: "linear-gradient(teal, pink)",
+            height: "auto", // Set your desired height
+            paddingBottom: "2em",
+          }}
+        >
+          <section className="container">
+            <>
+              <Row style={{ justifyContent: "center", marginTop: "2%" }}>
+                {childrenData.map((child) => (
+                  <Col md={3} style={{ marginRight: "5%", marginTop: "5%" }} key={child.id}>
+                    <ChildProfile
+                      childName={child.name}
+                      dob={child.dob}
+                      childId={child.id}
+                      childProfile={child.profile_image}
+                    />
+                  </Col>
+                ))}
+              </Row>
+            </>
+          </section>
+        </div>
       </div>
     </>
   );

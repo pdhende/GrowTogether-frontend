@@ -38,7 +38,7 @@ function MilestoneModal(props) {
   };
 
   return (
-    <Modal show={showEditModal} className="modal-xl" onHide={() => setShowEditModal(false)}>
+    <Modal className="centered-modal" show={showEditModal} onHide={() => setShowEditModal(false)}>
       <Modal.Header closeButton>
         <Modal.Title>Edit Milestone</Modal.Title>
       </Modal.Header>
@@ -96,7 +96,9 @@ function MilestoneModal(props) {
             />
           </Form.Group>
 
-          <Button onClick={submitForm}>Submit</Button>
+          <Button className="custom-btn custom-all-btn btn-rounded" onClick={submitForm}>
+            Submit
+          </Button>
         </Form>
       </Modal.Body>
       <Modal.Footer></Modal.Footer>

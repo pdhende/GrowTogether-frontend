@@ -81,7 +81,7 @@ function ChildProfile(props) {
       </div>
 
       {/* set modal data up */}
-      <Modal show={showModal} className="modal-xl" onHide={() => setShowModal(false)}>
+      <Modal show={showModal} className="centered-modal" onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Add Milestone</Modal.Title>
         </Modal.Header>
@@ -139,7 +139,9 @@ function ChildProfile(props) {
               />
             </Form.Group>
 
-            <Button onClick={submitForm}>Submit</Button>
+            <Button className="custom-btn custom-all-btn btn-rounded" onClick={submitForm}>
+              Submit
+            </Button>
           </Form>
         </Modal.Body>
         <Modal.Footer></Modal.Footer>
