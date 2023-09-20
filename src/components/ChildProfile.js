@@ -28,6 +28,8 @@ function ChildProfile(props) {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
+    } else {
+      window.location.href = "/milestoneTracker";
     }
 
     event.preventDefault();
