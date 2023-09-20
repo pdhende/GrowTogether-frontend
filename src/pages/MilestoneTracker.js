@@ -25,9 +25,7 @@ function MilestoneTracker() {
         <section className="container">
           <>
             <Row>
-              <h1 style={{ textAlign: "left", marginLeft: "1em" }}>
-                Hi username!
-              </h1>
+              <h1 style={{ textAlign: "left", marginLeft: "1em" }}></h1>
             </Row>
             <Row style={{ justifyContent: "center", marginTop: "2%" }}>
               {childrenData.map((child) => (

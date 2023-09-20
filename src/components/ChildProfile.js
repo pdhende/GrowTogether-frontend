@@ -10,7 +10,7 @@ function ChildProfile(props) {
   const [showModal, setShowModal] = useState(false);
   const [msFormData, setMsFormData] = useState({
     child_id: childId,
-    childProfile: "",
+    child_image: childProfile,
     title: "",
     milestone_category: "",
     date: "",
@@ -65,18 +65,12 @@ function ChildProfile(props) {
           </Card.Body>
           <Card.Body>
             <div>
-              <Button
-                className="custom-btn custom-all-btn btn-rounded"
-                onClick={() => setShowModal(true)}
-              >
+              <Button className="custom-btn custom-all-btn btn-rounded" onClick={() => setShowModal(true)}>
                 Add Milestone
               </Button>
             </div>
             <div style={{ paddingTop: "5%" }}>
-              <Button
-                className="custom-btn custom-all-btn btn-rounded"
-                onClick={handleClick}
-              >
+              <Button className="custom-btn custom-all-btn btn-rounded" onClick={handleClick}>
                 View All Milestones
               </Button>
             </div>
@@ -85,11 +79,7 @@ function ChildProfile(props) {
       </div>
 
       {/* set modal data up */}
-      <Modal
-        show={showModal}
-        className="modal-xl"
-        onHide={() => setShowModal(false)}
-      >
+      <Modal show={showModal} className="modal-xl" onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           <Modal.Title>Add Milestone</Modal.Title>
         </Modal.Header>
