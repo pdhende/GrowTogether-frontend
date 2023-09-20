@@ -70,7 +70,7 @@ function HomePage() {
 
       {/* set modal data up */}
 
-      <Modal show={showModal} className="modal-xl" onHide={() => setShowModal(false)}>
+      <Modal show={showModal} className="centered-modal" onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
           {formType === "signIn" ? <Modal.Title>Sign In</Modal.Title> : <Modal.Title>Sign Up</Modal.Title>}
         </Modal.Header>
