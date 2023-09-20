@@ -6,7 +6,7 @@ export function NewChild() {
     axios.post("http://localhost:3000/children.json", params).then((response) => {
       const newChild = response.data;
       console.log("created Child profile", newChild);
-      window.location.href = "/";
+      window.location.href = "/milestoneTracker";
     });
   };
 
