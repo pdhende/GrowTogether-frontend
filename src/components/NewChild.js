@@ -1,12 +1,21 @@
 import axios from "axios";
+import swal from "sweetalert";
 
-export function NewChild() {
+export function NewChild({ setShowCreateModal }) {
   const handleCreateChild = (params) => {
     console.log("handleCreateChild");
     axios.post("http://localhost:3000/children.json", params).then((response) => {
+      swal({
+        title: "Done!",
+        text: "Your child has been added",
+        icon: "success",
+        type: "success",
+        confirmButtonText: "OK!",
+        allowOutsideClick: true,
+      });
       const newChild = response.data;
       console.log("created Child profile", newChild);
-      window.location.href = "/milestoneTracker";
+      setShowCreateModal(false);
     });
   };
 

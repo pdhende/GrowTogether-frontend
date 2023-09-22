@@ -3,6 +3,7 @@ import { Card, Button, Form, Modal } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 function ChildProfile(props) {
   const navigate = useNavigate();
@@ -28,15 +29,23 @@ function ChildProfile(props) {
     if (form.checkValidity() === false) {
       event.preventDefault();
       event.stopPropagation();
-    } else {
-      window.location.href = "/milestoneTracker";
     }
 
     event.preventDefault();
     axios
       .post("http://localhost:3000/milestones.json", msFormData)
       .then((response) => {
-        window.location.href("/milestoneTracker");
+        swal({
+          title: "Done!",
+          text: "Your child's milestone has been added to their profile",
+          icon: "success",
+          type: "success",
+          confirmButtonText: "Close",
+          allowOutsideClick: true,
+        });
+        const newChild = response.data;
+        console.log("created Child profile", newChild);
+        setShowModal(false);
       })
       .catch((error) => {
         console.log(error.response);

@@ -16,6 +16,10 @@ export function UserDashboard() {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [users, setUsers] = useState([]);
 
+  const handleShowCreateModal = () => {
+    setShowCreateModal(true);
+  };
+
   const handleIndexUsers = () => {
     console.log("handleIndexUser");
     axios.get("http://localhost:3000/users.json").then((response) => {
@@ -29,7 +33,6 @@ export function UserDashboard() {
   };
 
   const handleClose = () => setShowCreateModal(false);
-  const handleShowCreateModal = () => setShowCreateModal(true);
 
   useEffect(() => {
     handleIndexUsers();
@@ -42,7 +45,7 @@ export function UserDashboard() {
         <div
           style={{
             backgroundImage: "linear-gradient(teal, pink)",
-            height: "auto", // Set your desired height
+            height: "auto",
           }}
         >
           <section className="custom-container container">
@@ -72,9 +75,6 @@ export function UserDashboard() {
                     )}
                   </>
                 </Row>
-                {/* <Row>
-                <Col>username</Col>
-              </Row> */}
               </Col>
               <Col md="8">
                 <Row>
@@ -108,13 +108,9 @@ export function UserDashboard() {
             <Modal.Title>New Child</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <NewChild />
+            <NewChild setShowCreateModal={setShowCreateModal} />
           </Modal.Body>
-          <Modal.Footer>
-            {/* <Button variant="primary" onClick={handleClose}>
-              Save Child
-            </Button> */}
-          </Modal.Footer>
+          <Modal.Footer></Modal.Footer>
         </Modal>
       </div>
     </>
