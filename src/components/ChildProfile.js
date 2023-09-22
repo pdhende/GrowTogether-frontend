@@ -49,6 +49,11 @@ function ChildProfile(props) {
       })
       .catch((error) => {
         console.log(error.response);
+        swal({
+          title: "Oops...",
+          text: "Something went wrong!",
+          icon: "error",
+        });
       });
 
     setMsFormData({

@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Button, Form, Modal } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
+import swal from "sweetalert";
 
 function MilestoneModal(props) {
   const [msData, setMSData] = useState([]);
@@ -32,6 +33,11 @@ function MilestoneModal(props) {
       })
       .catch((error) => {
         console.log(error.response);
+        swal({
+          title: "Oops...",
+          text: "Something went wrong!",
+          icon: "error",
+        });
       });
 
     setShowEditModal(false);
