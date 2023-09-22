@@ -67,7 +67,7 @@ function MilestoneModal(props) {
               <option value="Social">Social</option>
               <option value="Communication">Communication</option>
               <option value="Cognitive">Cognitive</option>
-              <option value="Physical Development">Physical Development</option>
+              <option value="Physical">Physical</option>
             </Form.Control>
           </Form.Group>
 
