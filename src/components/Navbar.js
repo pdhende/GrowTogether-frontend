@@ -8,9 +8,6 @@ function Navigation() {
     <>
       <Navbar className="nav-bar" expand="lg">
         <Nav>
-          <Nav.Link href="#home" as={Link} to="/">
-            About This App |
-          </Nav.Link>
           <Nav.Link href="#profile" as={Link} to="/dashboard">
             User Dashboard |
           </Nav.Link>
@@ -25,6 +22,9 @@ function Navigation() {
           </Nav.Link>
           <Nav.Link href="#photos" as={Link} to="/photos">
             Photo Album |
+          </Nav.Link>
+          <Nav.Link href="#home" as={Link} to="/">
+            About This App |
           </Nav.Link>
           <Nav.Link href="#logout" onClick={auth.logout}>
             Logout

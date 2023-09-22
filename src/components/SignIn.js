@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Form, Button, Alert } from "react-bootstrap";
 import { useState } from "react";
+import swal from "sweetalert";
 
 const jwt = localStorage.getItem("jwt");
 if (jwt) {
@@ -38,6 +39,11 @@ function SignIn() {
       })
       .catch((error) => {
         console.log(error.response);
+        swal({
+          title: "Oops...",
+          text: "It looks like your Email and/or Password is incorrect",
+          icon: "error",
+        });
       });
 
     setUserFormData({
