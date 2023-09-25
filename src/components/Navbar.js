@@ -24,7 +24,7 @@ function Navigation() {
             Photo Album |
           </Nav.Link>
           <Nav.Link href="#home" as={Link} to="/">
-            About This App |
+            About |
           </Nav.Link>
           <Nav.Link href="#logout" onClick={auth.logout}>
             Logout
