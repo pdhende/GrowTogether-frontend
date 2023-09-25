@@ -124,7 +124,7 @@ function ChildProfile(props) {
                 <option value="Social">Social</option>
                 <option value="Communication">Communication</option>
                 <option value="Cognitive">Cognitive</option>
-                <option value="Physical">Physical Development</option>
+                <option value="Physical">Physical</option>
               </Form.Control>
             </Form.Group>
 
