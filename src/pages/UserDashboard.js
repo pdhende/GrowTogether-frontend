@@ -42,12 +42,7 @@ export function UserDashboard() {
     <>
       <div>
         <Header />
-        <div
-          style={{
-            backgroundImage: "linear-gradient(teal, pink)",
-            height: "auto",
-          }}
-        >
+        <div className="background-img">
           <section className="custom-container container">
             <Row>
               <Col className="custom-col" md="3">

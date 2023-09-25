@@ -1,7 +1,9 @@
 * {
   /* font-family: "Dancing Script", cursive;*/
   /* font-family: "Satisfy", cursive; */
-  font-family: "Maven Pro", sans-serif;
+  /* font-family: "Trebuchet MS", Arial, sans-serif; */
+  /* font-family: Arial, sans-serif; */
+  font-family: "Perpetua", Georgia, serif;
 }
 
 /* Variable declaration */
@@ -145,4 +147,16 @@
   align-items: center;
   justify-content: center;
   min-height: 100vh; /* Ensure the modal covers the entire viewport height */
+}
+
+/* background page styling */
+.background-img {
+  background-image: linear-gradient(rgb(122, 206, 206), rgb(247, 222, 226));
+  /* background-image: url(/Users/robynspaulding/GrowTogether-frontend/src/images/15351.jpg); */
+  height: 100vh; /* 100% of viewport height */
+  width: 100vw; /* 100% of viewport width */
+  background-size: cover;
+  background-position: inherit;
+  background-attachment: fixed;
+  position: relative;
 }

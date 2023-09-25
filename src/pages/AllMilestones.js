@@ -28,7 +28,7 @@ function AllMilestones() {
   return (
     <>
       <Header />
-      <div style={{ backgroundImage: "linear-gradient(teal, pink)" }}>
+      <div className="background-img">
         <section className="custom-container container">
           <Row
             className="custom-col"

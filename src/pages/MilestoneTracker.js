@@ -22,13 +22,7 @@ function MilestoneTracker() {
     <>
       <div>
         <Header />
-        <div
-          style={{
-            backgroundImage: "linear-gradient(teal, pink)",
-            height: "auto", // Set your desired height
-            paddingBottom: "2em",
-          }}
-        >
+        <div className="background-img">
           <section className="container">
             <>
               <Row style={{ justifyContent: "center", marginTop: "2%" }}>
