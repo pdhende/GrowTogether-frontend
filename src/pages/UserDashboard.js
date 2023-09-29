@@ -61,8 +61,16 @@ export function UserDashboard() {
                               objectFit: "cover",
                             }}
                           />
-                          <Col>{user.name}</Col>
-                          <Col>{user.email}</Col>
+                          <Col>
+                            <span style={{ fontSize: "1.3rem" }}>
+                              {user.name}
+                            </span>
+                          </Col>
+                          <Col>
+                            <span style={{ fontSize: "1.3rem" }}>
+                              {user.email}
+                            </span>
+                          </Col>
                         </div>
                       ))
                     ) : (
@@ -73,24 +81,39 @@ export function UserDashboard() {
               </Col>
               <Col md="8">
                 <Row>
-                  <Col className="custom-col">
-                    <img src={childImg} style={{ width: "5rem" }}></img>Welcome! Add or edit children information here.
-                    <Button className="custom-btn custom-all-btn btn-rounded" onClick={handleShowCreateModal}>
-                      Add a Child
+                  <Col className="custom-col" style={{ paddingBottom: "1%" }}>
+                    <img src={childImg} style={{ width: "5rem" }}></img>
+                    <span style={{ fontSize: "1.3rem" }}>
+                      Welcome! Add or edit children information here.
+                    </span>
+                    <Button
+                      className="custom-btn custom-all-btn btn-rounded"
+                      onClick={handleShowCreateModal}
+                    >
+                      <span style={{ fontSize: "1.2rem" }}> Add a Child</span>
                     </Button>
                   </Col>
                 </Row>
                 <Row>
-                  <Col className="custom-col">
-                    <img src={reminderImg} style={{ width: "5rem" }}></img> Set Reminders to appointments and much more!
-                    <Button className="custom-btn custom-all-btn btn-rounded">Set reminders</Button>
+                  <Col className="custom-col" style={{ paddingBottom: "1%" }}>
+                    <img src={reminderImg} style={{ width: "5rem" }}></img>
+                    <span style={{ fontSize: "1.3rem" }}>
+                      Set Reminders to appointments and much more!
+                    </span>
+                    <Button className="custom-btn custom-all-btn btn-rounded">
+                      <span style={{ fontSize: "1.2rem" }}>Set reminders</span>
+                    </Button>
                   </Col>
                 </Row>
                 <Row>
-                  <Col className="custom-col">
-                    <img src={findImg} style={{ width: "5rem" }}></img>Find the best resources to get your questions
-                    answered!
-                    <Button className="custom-btn custom-all-btn btn-rounded">Find resources</Button>
+                  <Col className="custom-col" style={{ paddingBottom: "1%" }}>
+                    <img src={findImg} style={{ width: "5rem" }}></img>
+                    <span style={{ fontSize: "1.3rem" }}>
+                      Find the best resources to get your questions answered!
+                    </span>
+                    <Button className="custom-btn custom-all-btn btn-rounded">
+                      <span style={{ fontSize: "1.2rem" }}>Find resources</span>
+                    </Button>
                   </Col>
                 </Row>
               </Col>

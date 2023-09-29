@@ -3,6 +3,8 @@ import { Card, Button, Form, Modal } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
+import format from "date-fns/format";
+import { parseISO } from "date-fns";
 
 function MilestoneModal(props) {
   const [msData, setMSData] = useState([]);
@@ -11,7 +13,8 @@ function MilestoneModal(props) {
   const [msProperty, setMSProperty] = useState(props.milestone);
 
   const handleInputChange = (event) => {
-    const { name, value } = event.target;
+    let { name, value } = event.target;
+    console.log(name, value);
     setMSProperty({ ...msProperty, [name]: value });
   };
 
@@ -27,7 +30,10 @@ function MilestoneModal(props) {
 
     event.preventDefault();
     axios
-      .patch("http://localhost:3000/milestones/" + msProperty.id + ".json", msProperty)
+      .patch(
+        "http://localhost:3000/milestones/" + msProperty.id + ".json",
+        msProperty
+      )
       .then((response) => {
         window.location.href("/milestoneTracker");
       })
@@ -44,7 +50,11 @@ function MilestoneModal(props) {
   };
 
   return (
-    <Modal className="centered-modal" show={showEditModal} onHide={() => setShowEditModal(false)}>
+    <Modal
+      className="centered-modal"
+      show={showEditModal}
+      onHide={() => setShowEditModal(false)}
+    >
       <Modal.Header closeButton>
         <Modal.Title>Edit Milestone</Modal.Title>
       </Modal.Header>
@@ -102,7 +112,10 @@ function MilestoneModal(props) {
             />
           </Form.Group>
 
-          <Button className="custom-btn custom-all-btn btn-rounded" onClick={submitForm}>
+          <Button
+            className="custom-btn custom-all-btn btn-rounded"
+            onClick={submitForm}
+          >
             Submit
           </Button>
         </Form>

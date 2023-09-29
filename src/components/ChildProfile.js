@@ -4,6 +4,8 @@ import { useState } from "react";
 import axios from "axios";
 import { Navigate, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
+import format from "date-fns/format";
+import parseISO from "date-fns/parseISO";
 
 function ChildProfile(props) {
   const navigate = useNavigate();
@@ -81,12 +83,18 @@ function ChildProfile(props) {
           </Card.Body>
           <Card.Body>
             <div>
-              <Button className="custom-btn custom-all-btn btn-rounded" onClick={() => setShowModal(true)}>
+              <Button
+                className="custom-btn custom-all-btn btn-rounded"
+                onClick={() => setShowModal(true)}
+              >
                 Add Milestone
               </Button>
             </div>
             <div style={{ paddingTop: "5%" }}>
-              <Button className="custom-btn custom-all-btn btn-rounded" onClick={handleClick}>
+              <Button
+                className="custom-btn custom-all-btn btn-rounded"
+                onClick={handleClick}
+              >
                 View All Milestones
               </Button>
             </div>
@@ -95,7 +103,11 @@ function ChildProfile(props) {
       </div>
 
       {/* set modal data up */}
-      <Modal show={showModal} className="centered-modal" onHide={() => setShowModal(false)}>
+      <Modal
+        show={showModal}
+        className="centered-modal"
+        onHide={() => setShowModal(false)}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Add Milestone</Modal.Title>
         </Modal.Header>
@@ -153,7 +165,10 @@ function ChildProfile(props) {
               />
             </Form.Group>
 
-            <Button className="custom-btn custom-all-btn btn-rounded" onClick={submitForm}>
+            <Button
+              className="custom-btn custom-all-btn btn-rounded"
+              onClick={submitForm}
+            >
               Submit
             </Button>
           </Form>

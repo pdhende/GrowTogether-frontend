@@ -7,7 +7,6 @@ class AuthService {
   logout() {
     delete axios.defaults.headers.common["Authorization"];
     localStorage.removeItem("jwt");
-    localStorage.removeItem("user");
     window.location.href = "/";
   }
 }

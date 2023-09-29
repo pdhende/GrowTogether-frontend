@@ -6,6 +6,8 @@ import Header from "../components/Header";
 import { useLocation } from "react-router-dom";
 import MilestoneModal from "../components/MilestoneModal";
 import axios from "axios";
+import format from "date-fns/format";
+import parseISO from "date-fns/parseISO";
 
 function AllMilestones() {
   const { state } = useLocation();
@@ -40,7 +42,11 @@ function AllMilestones() {
             }}
           >
             <Col md="3">
-              <img className="child-img" alt={{ childName }} src={childProfile}></img>
+              <img
+                className="child-img"
+                alt={{ childName }}
+                src={childProfile}
+              ></img>
             </Col>
             <Col style={{ textAlign: "justify", padding: "2%" }} md="9">
               <Row>
@@ -60,13 +66,13 @@ function AllMilestones() {
               key={milestone.id}
             >
               <Col>
-                <Row>
-                  Title:
-                  {milestone.title}
-                </Row>
+                <Row>Title: {milestone.title}</Row>
                 <Row>Description: {milestone.description}</Row>
                 <Row>Category: {milestone.milestone_category}</Row>
-                <Row>Date: {milestone.date}</Row>
+                <Row>
+                  Date: {format(parseISO(milestone.date), "MM/dd/yyyy")}
+                  {/* {milestone.date} */}
+                </Row>
                 <Row style={{ paddingTop: "2%" }}>
                   <Button
                     className="custom-btn"
@@ -83,7 +89,9 @@ function AllMilestones() {
           ))}
         </section>
       </div>
-      {showEditModal === true ? <MilestoneModal milestone={msProperty} showEditModal={showEditModal} /> : null}
+      {showEditModal === true ? (
+        <MilestoneModal milestone={msProperty} showEditModal={showEditModal} />
+      ) : null}
     </>
   );
 }
