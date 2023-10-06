@@ -59,8 +59,9 @@ function HomePage() {
                   padding: "1%",
                 }}
               >
-                Keep track of your children's milestones, set reminders to important meetings, search for reliable
-                resources and save photo memories of your kids.
+                Keep track of your children's milestones, set reminders to
+                important meetings, search for reliable resources and save photo
+                memories of your kids.
               </Row>
             </>
           )}
@@ -70,9 +71,17 @@ function HomePage() {
 
       {/* set modal data up */}
 
-      <Modal show={showModal} className="centered-modal" onHide={() => setShowModal(false)}>
+      <Modal
+        show={showModal}
+        className="centered-modal"
+        onHide={() => setShowModal(false)}
+      >
         <Modal.Header closeButton>
-          {formType === "signIn" ? <Modal.Title>Sign In</Modal.Title> : <Modal.Title>Sign Up</Modal.Title>}
+          {formType === "signIn" ? (
+            <Modal.Title>Sign In</Modal.Title>
+          ) : (
+            <Modal.Title>Sign Up</Modal.Title>
+          )}
         </Modal.Header>
         <Modal.Body>
           {formType === "signIn" ? (
