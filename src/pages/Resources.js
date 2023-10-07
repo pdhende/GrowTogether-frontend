@@ -14,7 +14,7 @@ function Resources() {
   return (
     <>
       <Header />
-      <div className="background-img">
+      <div className="background-img-resources-pg">
         <section className="container">
           <div className="mb-2">
             <br></br>

@@ -20,7 +20,7 @@ function RSSFeed() {
   };
 
   return (
-    <div>
+    <div className="backgroung-img">
       {feedData.map((item, index) => (
         <section key={index}>
           <Row className="rss-col" key={item.link}>
