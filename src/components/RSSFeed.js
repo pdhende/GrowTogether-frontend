@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Row, Col } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 
 function RSSFeed() {
   const [feedData, setFeedData] = useState([]);
@@ -21,6 +21,7 @@ function RSSFeed() {
 
   return (
     <div className="backgroung-img">
+      <h1>Articles</h1>
       {feedData.map((item, index) => (
         <section key={index}>
           <Row className="rss-col" key={item.link}>
@@ -28,12 +29,15 @@ function RSSFeed() {
               <Row style={{ fontFamily: "Arial", fontSize: "20px" }}>
                 <strong>{item.title}</strong>{" "}
               </Row>
+              <Row>
+                <img src={item.images[0]} alt="pic here" style={{ width: "400px", height: "auto" }} />
+              </Row>
               <br />
               <Row>{removeHTMLTags(item.description)}</Row>
               <Row>
-                <a href={item.link} target="_blank" rel="noopener noreferrer" className="custom-link">
+                <Button className="custom-all-btn" onClick={() => window.open(item.link, "_blank")}>
                   Read Full Article
-                </a>
+                </Button>
               </Row>
             </Col>
           </Row>

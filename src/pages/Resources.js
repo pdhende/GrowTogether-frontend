@@ -15,11 +15,14 @@ function Resources() {
     <>
       <Header />
       <div className="background-img-resources-pg">
+        <br />
         <section className="container">
           <div className="mb-2">
-            <br></br>
+            <div className="gcse-search">
+              <br></br>
+            </div>
           </div>
-          <div className="gcse-search"></div>
+          <p>Discover answers to your pressing questions using our Google search bar</p>
         </section>
         <br></br>
         <section className="container">
