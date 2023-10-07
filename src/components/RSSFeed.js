@@ -26,7 +26,7 @@ function RSSFeed() {
         <section key={index}>
           <Row className="rss-col" key={item.link}>
             <Col>
-              <Row style={{ fontFamily: "Arial", fontSize: "20px" }}>
+              <Row style={{ fontSize: "20px" }}>
                 <strong>{item.title}</strong>{" "}
               </Row>
               <Row>
@@ -42,10 +42,6 @@ function RSSFeed() {
             </Col>
           </Row>
           <br />
-          {/* // <p>{item.title}</p>
-          // <p>{item.description}</p>
-          // <src href={item.link} />
-          Add more elements as needed */}
         </section>
       ))}
     </div>

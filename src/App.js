@@ -6,6 +6,7 @@ import { UserDashboard } from "./pages/UserDashboard";
 import "./App.css";
 import AllMilestones from "./pages/AllMilestones";
 import Resources from "./pages/Resources";
+import Favorites from "./pages/Favorites";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/milestoneTracker" element={<MilestoneTracker />} />
           <Route path="/allMilestones" element={<AllMilestones />} />
           <Route path="/resources" element={<Resources />} />
+          <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </Router>
     </div>
