@@ -171,3 +171,21 @@
   background-attachment: fixed;
   position: relative;
 }
+
+.rss-col {
+  background-color: white;
+  border: 3px solid #4e9c86;
+  text-align: justify;
+  padding: 2%;
+  font-family: Arial, sans-serif;
+}
+
+.custom-link {
+  /* Add your custom styles here */
+  color: #4e9c86; 
+  text-decoration: none; 
+  font-weight: bold;
+}
+.custom-link:hover {
+  color:rgb(173, 131, 138)
+}

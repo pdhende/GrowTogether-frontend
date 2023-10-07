@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import { useEffect } from "react";
 import { Row, Col } from "react-bootstrap";
+import RSSFeed from "../components/RSSFeed";
 
 function Resources() {
   useEffect(() => {
@@ -19,6 +20,10 @@ function Resources() {
             <br></br>
           </div>
           <div className="gcse-search"></div>
+        </section>
+        <br></br>
+        <section className="container">
+          <RSSFeed />
         </section>
       </div>
     </>
