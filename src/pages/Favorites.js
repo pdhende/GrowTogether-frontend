@@ -18,9 +18,6 @@ function Favorites() {
     handleIndexFavorites();
   }, []);
 
-  const removeHTMLTag = (str) => {
-    return str.replace(/<[^>]*>/g, "");
-  };
   return (
     <>
       <Header />
@@ -37,7 +34,7 @@ function Favorites() {
                   <img src={fav.thumbnail} alt="pic here" style={{ width: "400px", height: "auto" }} />
                 </Row>
                 <br />
-                {/* <Row>{removeHTMLTag(fav.description)}</Row> */}
+                <Row>{fav.description}</Row>
                 <Row>
                   <Button className="custom-all-btn" onClick={() => window.open(fav.link, "_blank")}>
                     Read Full Article
