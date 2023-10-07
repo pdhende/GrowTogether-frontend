@@ -42,11 +42,7 @@ function AllMilestones() {
             }}
           >
             <Col md="3">
-              <img
-                className="child-img"
-                alt={{ childName }}
-                src={childProfile}
-              ></img>
+              <img className="child-img" alt={{ childName }} src={childProfile}></img>
             </Col>
             <Col style={{ textAlign: "justify", padding: "2%" }} md="9">
               <Row>
@@ -89,9 +85,7 @@ function AllMilestones() {
           ))}
         </section>
       </div>
-      {showEditModal === true ? (
-        <MilestoneModal milestone={msProperty} showEditModal={showEditModal} />
-      ) : null}
+      {showEditModal === true ? <MilestoneModal milestone={msProperty} showEditModal={showEditModal} /> : null}
     </>
   );
 }
