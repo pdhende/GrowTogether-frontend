@@ -162,13 +162,22 @@
 
 /* background page styling */
 .background-img {
-  background-image: linear-gradient(rgb(122, 206, 206), rgb(247, 222, 226));
-  /* background-image: url(/Users/robynspaulding/GrowTogether-frontend/src/images/15351.jpg); */
+  background-image: linear-gradient(rgb(122, 206, 206), rgb(247, 222, 226)); 
   height: 100vh; /* 100% of viewport height */
   width: 100vw; /* 100% of viewport width */
   background-size: cover;
   background-position: inherit;
-  background-attachment: fixed;
+  background-attachment: scroll;
+  position: relative;
+}
+
+.background-img-resources-pg {
+  background-image: linear-gradient(rgb(122, 206, 206), rgb(247, 222, 226)); 
+  height: 220vh; /* 100% of viewport height */
+  width: 100vw; /* 100% of viewport width */
+  background-size: cover;
+  background-position: inherit;
+  background-attachment: scroll;
   position: relative;
 }
 
