@@ -26,6 +26,9 @@ function Navigation() {
           <Nav.Link href="#photos" as={Link} to="/photos">
             Photo Album |
           </Nav.Link>
+          <Nav.Link href="#favorites" as={Link} to="/favorites">
+            Favorites |
+          </Nav.Link>
           <Nav.Link href="#logout" onClick={auth.logout}>
             Logout
           </Nav.Link>
