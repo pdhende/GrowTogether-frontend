@@ -173,7 +173,7 @@
 
 .background-img-resources-pg {
   background-image: linear-gradient(rgb(122, 206, 206), rgb(247, 222, 226)); 
-  height: 220vh; /* 100% of viewport height */
+  height: 370vh; /* 100% of viewport height */
   width: 100vw; /* 100% of viewport width */
   background-size: cover;
   background-position: inherit;
@@ -197,4 +197,13 @@
 }
 .custom-link:hover {
   color:rgb(173, 131, 138)
+}
+
+.custom-all-btn:hover,
+.custom-all-btn:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em;
+  transform: translateY(-0.25em);
+  background-color: var(--btn-color);
+  border: 0.3rem solid whitesmoke;
+  color: white;
 }
