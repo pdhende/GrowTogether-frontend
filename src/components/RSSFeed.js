@@ -1,7 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Row, Col, Button } from "react-bootstrap";
+import swal from "sweetalert";
+import { Row, Button, Card } from "react-bootstrap";
 
 function RSSFeed() {
   const [feedData, setFeedData] = useState([]);
@@ -11,39 +12,73 @@ function RSSFeed() {
       setFeedData(response.data.data); // Access the 'data' property
     });
   };
-  useEffect(() => {
-    fetchData();
-  }, []);
+
+  const saveArticle = (article) => {
+    axios
+      .post("http://localhost:3000/favorites", article)
+      .then((response) => {
+        swal({
+          title: "Done!",
+          text: "Article has been added to your favorites",
+          icon: "success",
+          type: "success",
+          confirmButtonText: "OK!",
+          allowOutsideClick: true,
+        });
+        console.log("Article saved:", response.data);
+      })
+      .catch((error) => {
+        // Handle error, e.g., show an error message to the user.
+        console.error("Error saving article:", error);
+      });
+  };
 
   const removeHTMLTags = (str) => {
     return str.replace(/<[^>]*>/g, "");
   };
 
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   return (
     <div className="backgroung-img">
       <h1>Articles</h1>
-      {feedData.map((item, index) => (
-        <section key={index}>
-          <Row className="rss-col" key={item.link}>
-            <Col>
-              <Row style={{ fontSize: "20px" }}>
-                <strong>{item.title}</strong>{" "}
-              </Row>
-              <Row>
-                <img src={item.images[0]} alt="pic here" style={{ width: "400px", height: "auto" }} />
-              </Row>
-              <br />
-              <Row>{removeHTMLTags(item.description)}</Row>
-              <Row>
+      <br />
+      <Row xs={1} md={3} className="g-4 justify-content-center">
+        {feedData.map((item, index) => (
+          <section key={index}>
+            <Card border="dark" style={{ width: "20rem" }}>
+              <Card.Img variant="top" src={item.images[0]} />
+              <Card.Body>
+                <Card.Title>
+                  <strong>{item.title}</strong>{" "}
+                </Card.Title>
+                <Card.Text>{removeHTMLTags(item.description)}</Card.Text>
+              </Card.Body>
+              <Card.Body>
                 <Button className="custom-all-btn" onClick={() => window.open(item.link, "_blank")}>
-                  Read Full Article
-                </Button>
-              </Row>
-            </Col>
-          </Row>
-          <br />
-        </section>
-      ))}
+                  Full Article
+                </Button>{" "}
+                <Button
+                  className="custom-save-btn"
+                  onClick={() =>
+                    saveArticle({
+                      title: item.title,
+                      description: removeHTMLTags(item.description),
+                      thumbnail: item.images[0],
+                      link: item.link,
+                    })
+                  }
+                >
+                  Save Article
+                </Button>{" "}
+              </Card.Body>
+            </Card>
+            <br />
+          </section>
+        ))}
+      </Row>
     </div>
   );
 }
