@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Col, Row, Button } from "react-bootstrap";
+import { Card, Row, Button } from "react-bootstrap";
 import Header from "../components/Header";
 
 function Favorites() {
@@ -21,30 +21,37 @@ function Favorites() {
   return (
     <>
       <Header />
-      <div className="background-img">
+      <div className="background-img-resources-pg">
         <h1>Favorites Page</h1>
-        {favorites.map((fav) => (
-          <section className="custom-container container" key={fav.id}>
-            <Row className="rss-col" key={fav.link}>
-              <Col>
-                <Row style={{ fontSize: "20px" }}>
-                  <strong>{fav.title}</strong>{" "}
-                </Row>
-                <Row>
-                  <img src={fav.thumbnail} alt="pic here" style={{ width: "400px", height: "auto" }} />
-                </Row>
-                <br />
-                <Row>{fav.description}</Row>
-                <Row>
+        <br />
+        <Row xs={1} md={3} className="g-4 justify-content-center">
+          {favorites.map((fav, index) => (
+            <section key={index}>
+              <Card
+                border="dark"
+                style={{
+                  width: "20rem",
+                  margin: "5rem", // Remove any margin
+                }}
+              >
+                {" "}
+                <Card.Img variant="top" src={fav.thumbnail} />
+                <Card.Body>
+                  <Card.Title>
+                    <strong>{fav.title}</strong>{" "}
+                  </Card.Title>
+                  <Card.Text>{fav.description}</Card.Text>
+                </Card.Body>
+                <Card.Body>
                   <Button className="custom-all-btn" onClick={() => window.open(fav.link, "_blank")}>
-                    Read Full Article
-                  </Button>
-                </Row>
-              </Col>
-            </Row>
-            <br />
-          </section>
-        ))}
+                    Full Article
+                  </Button>{" "}
+                </Card.Body>
+              </Card>
+              <br />
+            </section>
+          ))}
+        </Row>
       </div>
     </>
   );
