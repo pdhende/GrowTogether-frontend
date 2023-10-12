@@ -51,25 +51,25 @@ export function UserDashboard() {
                     {users.length > 0 ? (
                       users.map((user, index) => (
                         <div key={index}>
-                          <img
-                            src={user.profilePicURL}
-                            alt={`Profile Picture of ${user.name}`}
-                            style={{
-                              width: "200px",
-                              height: "200px",
-                              borderRadius: "50%",
-                              objectFit: "cover",
-                            }}
-                          />
+                          {user.profilePicURL ? (
+                            <img
+                              src={user.profilePicURL}
+                              alt={`Profile Picture of ${user.name}`}
+                              style={{
+                                width: "200px",
+                                height: "200px",
+                                borderRadius: "50%",
+                                objectFit: "cover",
+                              }}
+                            />
+                          ) : (
+                            <span>{`Profile Puctire of ${user.name}`}</span>
+                          )}
                           <Col>
-                            <span style={{ fontSize: "1.3rem" }}>
-                              {user.name}
-                            </span>
+                            <span style={{ fontSize: "1.3rem" }}>{user.name}</span>
                           </Col>
                           <Col>
-                            <span style={{ fontSize: "1.3rem" }}>
-                              {user.email}
-                            </span>
+                            <span style={{ fontSize: "1.3rem" }}>{user.email}</span>
                           </Col>
                         </div>
                       ))
@@ -83,13 +83,8 @@ export function UserDashboard() {
                 <Row>
                   <Col className="custom-col" style={{ paddingBottom: "1%" }}>
                     <img src={childImg} style={{ width: "5rem" }}></img>
-                    <span style={{ fontSize: "1.3rem" }}>
-                      Welcome! Add or edit children information here.
-                    </span>
-                    <Button
-                      className="custom-btn custom-all-btn btn-rounded"
-                      onClick={handleShowCreateModal}
-                    >
+                    <span style={{ fontSize: "1.3rem" }}>Welcome! Add or edit children information here.</span>
+                    <Button className="custom-btn custom-all-btn btn-rounded" onClick={handleShowCreateModal}>
                       <span style={{ fontSize: "1.2rem" }}> Add a Child</span>
                     </Button>
                   </Col>
@@ -97,9 +92,7 @@ export function UserDashboard() {
                 <Row>
                   <Col className="custom-col" style={{ paddingBottom: "1%" }}>
                     <img src={reminderImg} style={{ width: "5rem" }}></img>
-                    <span style={{ fontSize: "1.3rem" }}>
-                      Set Reminders to appointments and much more!
-                    </span>
+                    <span style={{ fontSize: "1.3rem" }}>Set Reminders to appointments and much more!</span>
                     <Button className="custom-btn custom-all-btn btn-rounded">
                       <span style={{ fontSize: "1.2rem" }}>Set reminders</span>
                     </Button>
@@ -108,9 +101,7 @@ export function UserDashboard() {
                 <Row>
                   <Col className="custom-col" style={{ paddingBottom: "1%" }}>
                     <img src={findImg} style={{ width: "5rem" }}></img>
-                    <span style={{ fontSize: "1.3rem" }}>
-                      Find the best resources to get your questions answered!
-                    </span>
+                    <span style={{ fontSize: "1.3rem" }}>Find the best resources to get your questions answered!</span>
                     <Button className="custom-btn custom-all-btn btn-rounded">
                       <span style={{ fontSize: "1.2rem" }}>Find resources</span>
                     </Button>
