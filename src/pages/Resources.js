@@ -21,7 +21,10 @@ function Resources() {
               <br></br>
             </div>
           </div>
-          <p>Discover answers to your pressing questions using our Google search bar</p>
+          <p>
+            Discover answers to your pressing questions using our Google search bar
+            <br />
+          </p>
         </section>
         <br></br>
         <section className="container">
