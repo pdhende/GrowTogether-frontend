@@ -11,6 +11,7 @@ import blankPP from "../images/blank_pp.jpg";
 import childImg from "../images/kids.jpg";
 import reminderImg from "../images/reminders.jpg";
 import findImg from "../images/find.png";
+import { Link } from "react-router-dom";
 
 export function UserDashboard() {
   const [showCreateModal, setShowCreateModal] = useState(false);
@@ -103,7 +104,9 @@ export function UserDashboard() {
                     <img src={findImg} style={{ width: "5rem" }}></img>
                     <span style={{ fontSize: "1.3rem" }}>Find the best resources to get your questions answered!</span>
                     <Button className="custom-btn custom-all-btn btn-rounded">
-                      <span style={{ fontSize: "1.2rem" }}>Find resources</span>
+                      <Link to="/resources" className="custom-link-dashboard">
+                        <span style={{ fontSize: "1.2rem" }}>Find resources</span>
+                      </Link>
                     </Button>
                   </Col>
                 </Row>

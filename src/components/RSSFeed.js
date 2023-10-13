@@ -7,6 +7,7 @@ import { Row, Button, Card } from "react-bootstrap";
 function RSSFeed() {
   const [loading, setLoading] = useState(true); // Initial loading state
   const [feedData, setFeedData] = useState([]);
+  const [articlesToShow, setArticlesToShow] = useState(6); // Number of articles to show initially
 
   const fetchData = () => {
     axios.get("http://localhost:3000/fetch_data").then((response) => {
@@ -14,6 +15,11 @@ function RSSFeed() {
       setFeedData(response.data.data); // Access the 'data' property
       setLoading(false); // Set loading to false when articles are fetched
     });
+  };
+
+  // Function to load more articles
+  const loadMoreArticles = () => {
+    setArticlesToShow(articlesToShow + 6); // Load 6 more articles
   };
 
   const saveArticle = (article) => {
@@ -55,7 +61,7 @@ function RSSFeed() {
           </h3>
         ) : (
           <Row xs={1} md={3} className="g-4 justify-content-center">
-            {feedData.map((item, index) => (
+            {feedData.slice(0, articlesToShow).map((item, index) => (
               <section key={index}>
                 <Card border="dark" style={{ width: "20rem" }}>
                   <Card.Img variant="top" src={item.images[0]} />
@@ -88,6 +94,13 @@ function RSSFeed() {
               </section>
             ))}
           </Row>
+        )}
+        {feedData.length > articlesToShow && (
+          <div className="text-center">
+            <Button className="custom-all-btn" onClick={loadMoreArticles}>
+              Load More
+            </Button>
+          </div>
         )}
       </div>
     </div>
