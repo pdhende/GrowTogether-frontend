@@ -7,6 +7,7 @@ import "./App.css";
 import AllMilestones from "./pages/AllMilestones";
 import Resources from "./pages/Resources";
 import Favorites from "./pages/Favorites";
+import Reminders from "./components/Reminders";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/allMilestones" element={<AllMilestones />} />
           <Route path="/resources" element={<Resources />} />
           <Route path="/favorites" element={<Favorites />} />
+          <Route path="/reminders" element={<Reminders />} />
         </Routes>
       </Router>
     </div>

@@ -72,7 +72,7 @@ function RSSFeed() {
                     <Card.Text>{removeHTMLTags(item.description)}</Card.Text>
                   </Card.Body>
                   <Card.Body>
-                    <Button className="custom-all-btn" onClick={() => window.open(item.link, "_blank")}>
+                    <Button className="custom-all-btn btn-rounded" onClick={() => window.open(item.link, "_blank")}>
                       Full Article
                     </Button>{" "}
                     <Button
