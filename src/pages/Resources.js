@@ -2,7 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import { useEffect, useState } from "react";
 import RSSFeed from "../components/RSSFeed";
-import { Button, Card, Row, Col, Modal, CarouselItem } from "react-bootstrap";
+import { Card, Modal } from "react-bootstrap";
 import Carousel from "react-bootstrap/Carousel";
 
 function Resources() {
