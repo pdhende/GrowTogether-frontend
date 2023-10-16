@@ -29,13 +29,13 @@ function Resources() {
     script.src = "https://cse.google.com/cse.js?cx=56d40e6379e314c98";
 
     fetch(reqURL)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      setVideoData(data.items);
-    });
-  }, []);
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        setVideoData(data.items);
+      });
+  }, [reqURL]);
 
   return (
     <>
@@ -58,6 +58,10 @@ function Resources() {
           <RSSFeed />
         </section>
         <div>
+          <br />
+          <br />
+          <h1> Videos </h1>
+          {videoData && videoData.length > 0 ? (
             <Carousel>
               {videoData.reduce(reduceVideos, []).map((item, index) => (
                 <Carousel.Item key={index}>
@@ -69,10 +73,7 @@ function Resources() {
                           onClick={() => {
                             setVideoProperty(video);
                             setShowVideo(true);
-                            setSource(
-                              "https://www.youtube.com/embed/" +
-                                video.id.videoId
-                            );
+                            setSource("https://www.youtube.com/embed/" + video.id.videoId);
                           }}
                         >
                           {video.snippet.title}
@@ -88,19 +89,18 @@ function Resources() {
                 </Carousel.Item>
               ))}
             </Carousel>
-          </div>
+          ) : (
+            <p>Loading video data...</p>
+          )}
+        </div>
       </div>
-      <Modal
-        show={showVideo}
-        className="centered-modal"
-        onHide={() => setShowVideo(false)}
-      >
+      <Modal show={showVideo} className="centered-modal" onHide={() => setShowVideo(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>
-          </Modal.Title>
+          <Modal.Title></Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <iframe
+            title="title"
             width="450"
             height="315"
             src={source}
