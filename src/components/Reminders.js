@@ -17,7 +17,7 @@ const AddReminderModal = ({ show, onHide, onSave }) => {
     category: "",
     description: "",
     notes: "",
-    date: Date.now(),
+    date: new Date(),
   });
 
   const handleSave = () => {
