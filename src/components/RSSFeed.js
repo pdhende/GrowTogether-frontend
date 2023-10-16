@@ -63,7 +63,7 @@ function RSSFeed() {
           <Row xs={1} md={3} className="g-4 justify-content-center">
             {feedData.slice(0, articlesToShow).map((item, index) => (
               <section key={index}>
-                <Card border="dark" style={{ width: "20rem" }}>
+                <Card className="custom-article-card">
                   <Card.Img variant="top" src={item.images[0]} />
                   <Card.Body>
                     <Card.Title>
