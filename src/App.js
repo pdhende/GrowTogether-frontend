@@ -7,7 +7,7 @@ import "./App.css";
 import AllMilestones from "./pages/AllMilestones";
 import Resources from "./pages/Resources";
 import Favorites from "./pages/Favorites";
-import Reminders from "./components/Reminders";
+import Reminders from "./pages/Reminders";
 
 function App() {
   return (
