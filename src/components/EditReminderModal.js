@@ -78,7 +78,7 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button className="custom-all-btn" onClick={onHide}>
+        <Button className="edit-reminder-btn" onClick={onHide}>
           Close
         </Button>
         <Button className="custom-save-btn" onClick={handleUpdate}>

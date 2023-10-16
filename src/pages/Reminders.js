@@ -59,9 +59,11 @@ function Reminders() {
     <div>
       <Header />
       <h1>Reminders</h1> <br />
-      <Button className="custom-all-btn" onClick={() => setShowAddModal(true)}>
+      <Button className="add-reminder-btn" onClick={() => setShowAddModal(true)}>
         Add Reminder
       </Button>
+      <br />
+      <br />
       <Calendar
         localizer={localizer}
         events={reminders.map((reminder) => {

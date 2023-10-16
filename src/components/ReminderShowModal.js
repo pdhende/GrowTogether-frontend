@@ -74,7 +74,7 @@ const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
         <p>
           <strong>Date and Time:</strong> <br /> {moment(reminder?.date).format("MMMM D, YYYY h:mm A")}
         </p>
-        <Button className="custom-all-btn" onClick={openEditModal}>
+        <Button className="edit-reminder-btn" onClick={openEditModal}>
           Edit
         </Button>
         <br />
@@ -86,7 +86,7 @@ const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
         <EditReminderModal show={showEditModal} onHide={closeShowModal} reminder={reminder} onUpdate={onUpdate} />
       </Modal.Body>
       <Modal.Footer>
-        <Button className="custom-all-btn btn-rounded" onClick={refreshWindow}>
+        <Button className="add-reminder-btn" onClick={refreshWindow}>
           Close
         </Button>
       </Modal.Footer>

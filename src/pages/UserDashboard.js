@@ -95,7 +95,9 @@ export function UserDashboard() {
                     <img src={reminderImg} style={{ width: "5rem" }}></img>
                     <span style={{ fontSize: "1.3rem" }}>Set Reminders to appointments and much more!</span>
                     <Button className="custom-btn custom-all-btn btn-rounded">
-                      <span style={{ fontSize: "1.2rem" }}>Set reminders</span>
+                      <Link to="/reminders" className="custom-link-dashboard">
+                        <span style={{ fontSize: "1.2rem" }}>Set Reminders</span>
+                      </Link>
                     </Button>
                   </Col>
                 </Row>
