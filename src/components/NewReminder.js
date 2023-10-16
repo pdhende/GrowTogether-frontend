@@ -80,10 +80,10 @@ const NewReminder = ({ show, onHide, onSave }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button className="custom-all-btn btn-rounded" onClick={onHide}>
+        <Button className="add-reminder-btn" onClick={onHide}>
           Close
         </Button>
-        <Button className="custom-save-btn btn-rounded" onClick={handleSave}>
+        <Button className="custom-save-btn" onClick={handleSave}>
           Save Reminder
         </Button>
       </Modal.Footer>

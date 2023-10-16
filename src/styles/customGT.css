@@ -281,3 +281,32 @@
   font-size: 45px;
   color: var(--btn-color);
 }
+
+.add-reminder-btn {
+  background-color: #3174ad;
+}
+
+.add-reminder-btn:hover,
+.add-reminder-btn:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em;
+  transform: translateY(-0.25em);
+  background-color: white;
+  border: 0.3rem solid #3174ad;
+  color: #3174ad
+}
+
+.edit-reminder-btn {
+  color: #3174ad;
+  font-size: small;
+  background-color: white;
+  border: 0.1rem solid #3174ad;
+}
+
+.edit-reminder-btn:hover,
+.edit-reminder-btn:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em;
+  transform: translateY(-0.25em);
+  background-color: #3174ad;
+  border: 0.3rem solid white;
+  color: white
+}
