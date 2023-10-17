@@ -45,10 +45,17 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
           <Form.Group>
             <Form.Label>Category</Form.Label>
             <Form.Control
-              type="text"
+              as="select" // Set the input type to "select"
               value={editedReminder.category}
               onChange={(e) => setEditedReminder({ ...editedReminder, category: e.target.value })}
-            />
+            >
+              <option value="School Event">School Event</option>
+              <option value="Medical Appointment">Medical Appointment</option>
+              <option value="Extracurricular Activity">Extracurricular Activity</option>
+              <option value="Assignment">Assignment</option>
+              <option value="Family Event">Family Event</option>
+              <option value="Other">Other</option>
+            </Form.Control>
           </Form.Group>
           <Form.Group>
             <Form.Label>Child Name</Form.Label>

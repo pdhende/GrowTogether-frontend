@@ -43,10 +43,17 @@ const NewReminder = ({ show, onHide, onSave }) => {
           <Form.Group>
             <Form.Label>Category</Form.Label>
             <Form.Control
-              type="text"
+              as="select" // Set the input type to "select"
               value={newReminder.category}
               onChange={(e) => setNewReminder({ ...newReminder, category: e.target.value })}
-            />
+            >
+              <option value="School Event">School Event</option>
+              <option value="Medical Appointment">Medical Appointment</option>
+              <option value="Extracurricular Activity">Extracurricular Activity</option>
+              <option value="Assignment">Assignment</option>
+              <option value="Family Event">Family Event</option>
+              <option value="Other">Other</option>
+            </Form.Control>
           </Form.Group>
           <Form.Group>
             <Form.Label>Description</Form.Label>
@@ -78,13 +85,13 @@ const NewReminder = ({ show, onHide, onSave }) => {
 
           {/* Add more Form.Group for other reminder properties */}
         </Form>
+        <Button className="custom-save-btn" onClick={handleSave}>
+          Save Reminder
+        </Button>
       </Modal.Body>
       <Modal.Footer>
         <Button className="add-reminder-btn" onClick={onHide}>
           Close
-        </Button>
-        <Button className="custom-save-btn" onClick={handleSave}>
-          Save Reminder
         </Button>
       </Modal.Footer>
     </Modal>
