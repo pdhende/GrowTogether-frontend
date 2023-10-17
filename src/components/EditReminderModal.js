@@ -65,9 +65,11 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
               onChange={(e) => setEditedReminder({ ...editedReminder, child_name: e.target.value })}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Notes</Form.Label>
             <Form.Control
+              as="textarea"
+              rows={3}
               type="text"
               value={editedReminder.notes}
               onChange={(e) => setEditedReminder({ ...editedReminder, notes: e.target.value })}
@@ -85,9 +87,9 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button className="edit-reminder-btn" onClick={onHide}>
+        {/* <Button className="edit-reminder-btn" onClick={onHide}>
           Close
-        </Button>
+        </Button> */}
         <Button className="custom-save-btn" onClick={handleUpdate}>
           Save Changes
         </Button>
