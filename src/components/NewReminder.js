@@ -63,9 +63,11 @@ const NewReminder = ({ show, onHide, onSave }) => {
               onChange={(e) => setNewReminder({ ...newReminder, description: e.target.value })}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Notes</Form.Label>
             <Form.Control
+              as="textarea"
+              rows={3}
               type="text"
               value={newReminder.notes}
               onChange={(e) => setNewReminder({ ...newReminder, notes: e.target.value })}
