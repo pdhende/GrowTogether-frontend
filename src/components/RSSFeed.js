@@ -5,21 +5,20 @@ import swal from "sweetalert";
 import { Row, Button, Card } from "react-bootstrap";
 
 function RSSFeed() {
-  const [loading, setLoading] = useState(true); // Initial loading state
+  const [loading, setLoading] = useState(true);
   const [feedData, setFeedData] = useState([]);
-  const [articlesToShow, setArticlesToShow] = useState(6); // Number of articles to show initially
+  const [articlesToShow, setArticlesToShow] = useState(6);
 
   const fetchData = () => {
     axios.get("http://localhost:3000/fetch_data").then((response) => {
       console.log(response.data);
-      setFeedData(response.data.data); // Access the 'data' property
-      setLoading(false); // Set loading to false when articles are fetched
+      setFeedData(response.data.data);
+      setLoading(false);
     });
   };
 
-  // Function to load more articles
   const loadMoreArticles = () => {
-    setArticlesToShow(articlesToShow + 6); // Load 6 more articles
+    setArticlesToShow(articlesToShow + 6);
   };
 
   const saveArticle = (article) => {
@@ -37,7 +36,6 @@ function RSSFeed() {
         console.log("Article saved:", response.data);
       })
       .catch((error) => {
-        // Handle error, e.g., show an error message to the user.
         console.error("Error saving article:", error);
       });
   };

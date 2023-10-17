@@ -45,10 +45,17 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
           <Form.Group>
             <Form.Label>Category</Form.Label>
             <Form.Control
-              type="text"
+              as="select" // Set the input type to "select"
               value={editedReminder.category}
               onChange={(e) => setEditedReminder({ ...editedReminder, category: e.target.value })}
-            />
+            >
+              <option value="School Event">School Event</option>
+              <option value="Medical Appointment">Medical Appointment</option>
+              <option value="Extracurricular Activity">Extracurricular Activity</option>
+              <option value="Assignment">Assignment</option>
+              <option value="Family Event">Family Event</option>
+              <option value="Other">Other</option>
+            </Form.Control>
           </Form.Group>
           <Form.Group>
             <Form.Label>Child Name</Form.Label>
@@ -58,9 +65,11 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
               onChange={(e) => setEditedReminder({ ...editedReminder, child_name: e.target.value })}
             />
           </Form.Group>
-          <Form.Group>
+          <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Notes</Form.Label>
             <Form.Control
+              as="textarea"
+              rows={3}
               type="text"
               value={editedReminder.notes}
               onChange={(e) => setEditedReminder({ ...editedReminder, notes: e.target.value })}
@@ -78,9 +87,9 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button className="edit-reminder-btn" onClick={onHide}>
+        {/* <Button className="edit-reminder-btn" onClick={onHide}>
           Close
-        </Button>
+        </Button> */}
         <Button className="custom-save-btn" onClick={handleUpdate}>
           Save Changes
         </Button>

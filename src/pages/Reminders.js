@@ -70,6 +70,7 @@ function Reminders() {
           return {
             start: moment(reminder.date).toDate(),
             end: moment(reminder.date).toDate(),
+            child_name: reminder.child_name,
             title: reminder.description,
           };
         })}
