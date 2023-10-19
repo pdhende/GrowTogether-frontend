@@ -39,11 +39,11 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
       <Modal.Body>
         <Form>
           <Form.Group>
-            <Form.Label>Description</Form.Label>
+            <Form.Label>Child Name</Form.Label>
             <Form.Control
               type="text"
-              value={editedReminder.description}
-              onChange={(e) => setEditedReminder({ ...editedReminder, description: e.target.value })}
+              value={editedReminder.child_name}
+              onChange={(e) => setEditedReminder({ ...editedReminder, child_name: e.target.value })}
             />
           </Form.Group>
           <Form.Group>
@@ -62,11 +62,11 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
             </Form.Control>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Child Name</Form.Label>
+            <Form.Label>Title</Form.Label>
             <Form.Control
               type="text"
-              value={editedReminder.child_name}
-              onChange={(e) => setEditedReminder({ ...editedReminder, child_name: e.target.value })}
+              value={editedReminder.description}
+              onChange={(e) => setEditedReminder({ ...editedReminder, description: e.target.value })}
             />
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">

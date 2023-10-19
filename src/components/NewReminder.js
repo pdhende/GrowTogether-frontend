@@ -57,7 +57,7 @@ const NewReminder = ({ show, onHide, onSave }) => {
             </Form.Control>
           </Form.Group>
           <Form.Group>
-            <Form.Label>Description</Form.Label>
+            <Form.Label>Title</Form.Label>
             <Form.Control
               type="text"
               value={newReminder.description}

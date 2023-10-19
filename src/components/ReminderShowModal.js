@@ -57,7 +57,7 @@ const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
           <strong>Category:</strong> <br /> {reminder?.category}
         </p>
         <p>
-          <strong>Details:</strong> <br /> {reminder?.description}
+          <strong>Title:</strong> <br /> {reminder?.description}
         </p>
         <p>
           <strong>Notes:</strong> <br /> {reminder?.notes}
