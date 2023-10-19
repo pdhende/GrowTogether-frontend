@@ -27,6 +27,10 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
       });
   };
 
+  const refreshWindow = () => {
+    window.location.href = "/reminders";
+  };
+
   return (
     <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton>
@@ -94,6 +98,9 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
           Save Changes
         </Button>
       </Modal.Footer>
+      <Button className="edit-reminder-btn" onClick={refreshWindow}>
+        Cancel
+      </Button>
     </Modal>
   );
 };
