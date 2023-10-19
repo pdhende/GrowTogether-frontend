@@ -47,6 +47,7 @@ const NewReminder = ({ show, onHide, onSave }) => {
               value={newReminder.category}
               onChange={(e) => setNewReminder({ ...newReminder, category: e.target.value })}
             >
+              <option value="Empty">-- Choose a category --</option>
               <option value="School Event">School Event</option>
               <option value="Medical Appointment">Medical Appointment</option>
               <option value="Extracurricular Activity">Extracurricular Activity</option>
