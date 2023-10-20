@@ -1,14 +1,25 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import swal from "sweetalert";
+import moment from "moment";
 import axios from "axios";
 
-function EmailForm({ show, onHide }) {
+function EmailForm({ show, onHide, reminder }) {
   const [recipient, setRecipient] = useState("");
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState("");
+
+  useEffect(() => {
+    if (reminder) {
+      // Pre-fill the form fields with reminder data
+      setSubject(reminder.description);
+      const formattedDate = moment(reminder.date).format("DD/MM/YYYY HH:mm");
+      const messageBody = `Date: ${formattedDate}\nNotes: ${reminder.notes}`;
+      setBody(messageBody);
+    }
+  }, [reminder]);
 
   const sendEmail = () => {
     axios
@@ -60,7 +71,14 @@ function EmailForm({ show, onHide }) {
           </Form.Group>
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Message</Form.Label>
-            <Form.Control textarea placeholder="Email Body" value={body} onChange={(e) => setBody(e.target.value)} />
+            <Form.Control
+              as="textarea"
+              rows={3}
+              type="text"
+              placeholder="Email Body"
+              value={body}
+              onChange={(e) => setBody(e.target.value)}
+            />
           </Form.Group>
         </Form>
         <Button className="send-email-btn" onClick={sendEmail}>

@@ -89,7 +89,7 @@ const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
           Close
         </Button>
       </Modal.Footer>
-      <EmailForm show={showEmailModal} onHide={() => setShowEmailModal(false)} />
+      <EmailForm show={showEmailModal} onHide={() => setShowEmailModal(false)} reminder={reminder} />
     </Modal>
   );
 };
