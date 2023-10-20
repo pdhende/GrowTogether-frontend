@@ -8,11 +8,13 @@ import Button from "react-bootstrap/Button";
 import "react-datepicker/dist/react-datepicker.css";
 import NewReminder from "../components/NewReminder.js";
 import ReminderShowModal from "../components/ReminderShowModal";
+import EmailForm from "../components/EmailForm";
 const localizer = momentLocalizer(moment);
 
 function Reminders() {
   const [reminders, setReminders] = useState([]);
   const [showAddModal, setShowAddModal] = useState(false);
+  const [showEmailModal, setShowEmailModal] = useState(false);
   const [selectedReminder, setSelectedReminder] = useState(null);
   const [showReminderDetailsModal, setShowReminderDetailsModal] = useState(false);
 
