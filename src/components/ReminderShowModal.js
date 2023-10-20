@@ -13,15 +13,6 @@ const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
     setShowEditModal(true);
   };
 
-  const closeShowModal = () => {
-    onHide();
-  };
-
-  const refreshWindow = () => {
-    setShowEditModal(false);
-    window.location.href = "/reminders";
-  };
-
   const handleDelete = () => {
     swal({
       title: "Are you sure?",
@@ -66,7 +57,7 @@ const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
           <strong>Category:</strong> <br /> {reminder?.category}
         </p>
         <p>
-          <strong>Details:</strong> <br /> {reminder?.description}
+          <strong>Title:</strong> <br /> {reminder?.description}
         </p>
         <p>
           <strong>Notes:</strong> <br /> {reminder?.notes}
@@ -83,10 +74,10 @@ const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
           Delete
         </Button>
 
-        <EditReminderModal show={showEditModal} onHide={closeShowModal} reminder={reminder} onUpdate={onUpdate} />
+        <EditReminderModal show={showEditModal} reminder={reminder} onUpdate={onUpdate} />
       </Modal.Body>
       <Modal.Footer>
-        <Button className="add-reminder-btn" onClick={refreshWindow}>
+        <Button className="add-reminder-btn" onClick={onHide}>
           Close
         </Button>
       </Modal.Footer>
