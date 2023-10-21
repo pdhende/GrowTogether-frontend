@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import moment from "moment";
 import EditReminderModal from "./EditReminderModal";
-import EmailForm from "../components/EmailForm";
+import EmailReminderForm from "./EmailReminderForm";
 
 import axios from "axios";
 import swal from "sweetalert";
@@ -88,7 +88,7 @@ const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
       <Button className="send-email-btn" onClick={() => setShowEmailModal(true)}>
         Send Email
       </Button>
-      <EmailForm show={showEmailModal} onHide={() => setShowEmailModal(false)} reminder={reminder} />
+      <EmailReminderForm show={showEmailModal} onHide={() => setShowEmailModal(false)} reminder={reminder} />
     </Modal>
   );
 };

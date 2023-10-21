@@ -6,7 +6,7 @@ import swal from "sweetalert";
 import moment from "moment";
 import axios from "axios";
 
-function EmailForm({ show, onHide, reminder }) {
+function EmailReminderForm({ show, onHide, reminder }) {
   const [recipient, setRecipient] = useState("");
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState("");
@@ -97,4 +97,4 @@ function EmailForm({ show, onHide, reminder }) {
   );
 }
 
-export default EmailForm;
+export default EmailReminderForm;
