@@ -93,49 +93,61 @@ function Contacts() {
   return (
     <div>
       <Header />
-      <h1>Contact List</h1>
-      <Button className="custom-all-btn" onClick={openAddContactModal}>
-        Add Contact
-      </Button>
-      <Row xs={1} md={3} className="g-4 justify-content-center">
-        {contacts.map((contact, index) => (
-          <section key={index}>
-            <Card style={{ width: "18rem" }}>
-              <Card.Header>
-                <strong>{contact.name}</strong>
-              </Card.Header>
-              <ListGroup variant="flush">
-                <ListGroup.Item>{contact.email_address}</ListGroup.Item>
-                <ListGroup.Item>{contact.contact_type}</ListGroup.Item>
-                <ListGroup.Item>
-                  <Button className="custom-all-btn" onClick={() => openUpdateContactModal(contact)}>
-                    Update Contact{" "}
-                  </Button>
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  <Button className="custom-save-btn" onClick={() => handleDeleteContact(contact.id)}>
-                    Remove from Contacts
-                  </Button>
-                </ListGroup.Item>
-              </ListGroup>
-            </Card>
-            <br />
-          </section>
-        ))}
-      </Row>
-      <NewContact show={showAddContactModal} onHide={() => setShowAddContactModal(false)} onSave={handleAddContact} />
+      <div className="background-img-resources-pg">
+        <br />
+        <section className="container">
+          <h1>Contact List</h1>
+          <br />
+          <Button className="custom-all-btn" onClick={openAddContactModal}>
+            Add Contact
+          </Button>
+          <br />
+          <Row xs={1} md={3} className="g-4 justify-content-center">
+            {contacts.map((contact, index) => (
+              <section key={index}>
+                <br />
+                <Card style={{ width: "18rem" }}>
+                  <Card.Header>
+                    <strong>{contact.name}</strong>
+                  </Card.Header>
+                  <ListGroup variant="flush">
+                    <ListGroup.Item>{contact.email_address}</ListGroup.Item>
+                    <ListGroup.Item>{contact.contact_type}</ListGroup.Item>
+                    <ListGroup.Item>
+                      <Button className="custom-all-btn" onClick={() => openUpdateContactModal(contact)}>
+                        Update Contact{" "}
+                      </Button>
+                    </ListGroup.Item>
+                    <ListGroup.Item>
+                      <Button className="custom-save-btn" onClick={() => handleDeleteContact(contact.id)}>
+                        Remove from Contacts
+                      </Button>
+                    </ListGroup.Item>
+                  </ListGroup>
+                </Card>
+                <br />
+              </section>
+            ))}
+          </Row>
+          <NewContact
+            show={showAddContactModal}
+            onHide={() => setShowAddContactModal(false)}
+            onSave={handleAddContact}
+          />
 
-      {editedContact && (
-        <UpdateContactModal
-          show={showUpdateContactModal}
-          onHide={() => {
-            setShowUpdateContactModal(false);
-            setEditedContact(null);
-          }}
-          contact={editedContact}
-          onUpdate={handleUpdateContact}
-        />
-      )}
+          {editedContact && (
+            <UpdateContactModal
+              show={showUpdateContactModal}
+              onHide={() => {
+                setShowUpdateContactModal(false);
+                setEditedContact(null);
+              }}
+              contact={editedContact}
+              onUpdate={handleUpdateContact}
+            />
+          )}
+        </section>
+      </div>
     </div>
   );
 }

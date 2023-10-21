@@ -70,7 +70,7 @@ const UpdateContactModal = ({ show, onHide, contact, onUpdate }) => {
           Save Changes
         </Button>
       </Modal.Footer>
-      <Button className="edit-reminder-btn" onClick={refreshWindow}>
+      <Button className="custom-save-btn" onClick={refreshWindow}>
         Cancel
       </Button>
     </Modal>

@@ -62,7 +62,7 @@ function NewContact({ show, onHide, onSave }) {
         </Button>
       </Modal.Body>
       <Modal.Footer>
-        <Button className="add-Contact-btn" onClick={onHide}>
+        <Button className="add-reminder-btn" onClick={onHide}>
           Close
         </Button>
       </Modal.Footer>
