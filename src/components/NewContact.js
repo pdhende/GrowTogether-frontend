@@ -7,7 +7,7 @@ function NewContact({ show, onHide, onSave }) {
   const [newContact, setNewContact] = useState({
     name: "",
     email_address: "",
-    contact_type: "Family",
+    contact_type: "",
   });
 
   const handleSave = () => {
