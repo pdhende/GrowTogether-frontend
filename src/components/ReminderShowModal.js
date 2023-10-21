@@ -48,9 +48,12 @@ const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
   };
 
   return (
-    <Modal show={show} onHide={onHide}>
-      <Modal.Header closeButton>
+    <Modal show={show}>
+      <Modal.Header>
         <Modal.Title>Reminder Details</Modal.Title>
+        <Button className="add-reminder-btn" onClick={onHide}>
+          Close
+        </Button>
       </Modal.Header>
       <Modal.Body>
         <p>
@@ -78,17 +81,13 @@ const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
         </Button>
         <br />
         <br />
-        <Button className="send-email-btn" onClick={() => setShowEmailModal(true)}>
-          Send Email
-        </Button>
 
-        <EditReminderModal show={showEditModal} reminder={reminder} onUpdate={onUpdate} />
+        <EditReminderModal show={showEditModal} reminder={reminder} onUpdate={onUpdate} onHide={onHide} />
       </Modal.Body>
-      <Modal.Footer>
-        <Button className="add-reminder-btn" onClick={onHide}>
-          Close
-        </Button>
-      </Modal.Footer>
+      <Modal.Footer></Modal.Footer>
+      <Button className="send-email-btn" onClick={() => setShowEmailModal(true)}>
+        Send Email
+      </Button>
       <EmailForm show={showEmailModal} onHide={() => setShowEmailModal(false)} reminder={reminder} />
     </Modal>
   );

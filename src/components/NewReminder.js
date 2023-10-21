@@ -26,9 +26,12 @@ const NewReminder = ({ show, onHide, onSave }) => {
   };
 
   return (
-    <Modal show={show} onHide={onHide}>
-      <Modal.Header closeButton>
+    <Modal show={show}>
+      <Modal.Header>
         <Modal.Title>Add Reminder</Modal.Title>
+        <Button className="add-reminder-btn" onClick={onHide}>
+          Close
+        </Button>
       </Modal.Header>
       <Modal.Body>
         <Form>
@@ -92,11 +95,10 @@ const NewReminder = ({ show, onHide, onSave }) => {
           Save Reminder
         </Button>
       </Modal.Body>
-      <Modal.Footer>
-        <Button className="add-reminder-btn" onClick={onHide}>
-          Close
-        </Button>
-      </Modal.Footer>
+      <Modal.Footer></Modal.Footer>
+      <Button className="add-reminder-btn" onClick={onHide}>
+        Cancel
+      </Button>
     </Modal>
   );
 };

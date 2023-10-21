@@ -32,9 +32,12 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
   };
 
   return (
-    <Modal show={show} onHide={onHide}>
-      <Modal.Header closeButton>
+    <Modal show={show}>
+      <Modal.Header>
         <Modal.Title>Edit Reminder</Modal.Title>
+        <Button className="add-reminder-btn" onClick={refreshWindow}>
+          Close
+        </Button>
       </Modal.Header>
       <Modal.Body>
         <Form>

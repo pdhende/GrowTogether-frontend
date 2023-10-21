@@ -45,9 +45,12 @@ function EmailForm({ show, onHide, reminder }) {
   };
 
   return (
-    <Modal show={show} onHide={onHide}>
-      <Modal.Header closeButton>
+    <Modal show={show}>
+      <Modal.Header>
         <Modal.Title>Send Email</Modal.Title>
+        <Button className="add-reminder-btn" onClick={onHide}>
+          Close
+        </Button>
       </Modal.Header>
       <Modal.Body>
         <Form>
@@ -86,11 +89,10 @@ function EmailForm({ show, onHide, reminder }) {
           Send
         </Button>
       </Modal.Body>
-      <Modal.Footer>
-        <Button className="add-reminder-btn" onClick={onHide}>
-          Cancle
-        </Button>
-      </Modal.Footer>
+      <Modal.Footer></Modal.Footer>
+      <Button className="add-reminder-btn" onClick={onHide}>
+        Cancle
+      </Button>
     </Modal>
   );
 }
