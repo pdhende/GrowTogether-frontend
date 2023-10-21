@@ -78,6 +78,7 @@ function EmailForm({ show, onHide, reminder }) {
               placeholder="Email Body"
               value={body}
               onChange={(e) => setBody(e.target.value)}
+              style={{ height: "300px" }}
             />
           </Form.Group>
         </Form>

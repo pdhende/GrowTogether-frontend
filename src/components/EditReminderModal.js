@@ -77,6 +77,7 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
               type="text"
               value={editedReminder.notes}
               onChange={(e) => setEditedReminder({ ...editedReminder, notes: e.target.value })}
+              style={{ height: "200px" }}
             />
           </Form.Group>
           <Form.Group>
@@ -91,9 +92,6 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        {/* <Button className="edit-reminder-btn" onClick={onHide}>
-          Close
-        </Button> */}
         <Button className="custom-save-btn" onClick={handleUpdate}>
           Save Changes
         </Button>
