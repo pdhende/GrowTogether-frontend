@@ -11,12 +11,18 @@ function Contacts() {
   const [contacts, setContacts] = useState([]);
   const [showAddContactModal, setShowAddContactModal] = useState(false);
   const [showUpdateContactModal, setShowUpdateContactModal] = useState(false);
+  const [editedContact, setEditedContact] = useState(null);
 
   const handleIndexContacts = () => {
     axios.get("http://localhost:3000/contacts.json").then((response) => {
       console.log(response.data);
       setContacts(response.data);
     });
+  };
+
+  const openAddContactModal = () => {
+    console.log("Opening Add Contact Modal");
+    setShowAddContactModal(true);
   };
 
   const handleAddContact = (newContact) => {
@@ -31,23 +37,22 @@ function Contacts() {
       });
   };
 
-  const openUpdateContactModal = () => {
-    setShowUpdateContactModal(true);
-  };
-
-  const handleContactUpdate = (updatedContactData) => {
-    // Handle the update of the contact data
-    // This function should update your contacts state
-    // For example:
-    const updatedContacts = contacts.map((c) => {
-      if (c.id === updatedContactData.id) {
+  const handleUpdateContact = (updatedContactData) => {
+    const updatedContacts = contacts.map((contact) => {
+      if (contact.id === updatedContactData.id) {
         return updatedContactData;
       } else {
-        return c;
+        return contact;
       }
     });
 
     setContacts(updatedContacts);
+    setShowUpdateContactModal(false);
+  };
+
+  const openUpdateContactModal = (contact) => {
+    setEditedContact(contact);
+    setShowUpdateContactModal(true);
   };
 
   const handleDeleteContact = (id) => {
@@ -84,11 +89,12 @@ function Contacts() {
   useEffect(() => {
     handleIndexContacts();
   }, []);
+
   return (
     <div>
       <Header />
       <h1>Contact List</h1>
-      <Button className="custom-all-btn" onClick={() => setShowAddContactModal(true)}>
+      <Button className="custom-all-btn" onClick={openAddContactModal}>
         Add Contact
       </Button>
       <Row xs={1} md={3} className="g-4 justify-content-center">
@@ -102,7 +108,7 @@ function Contacts() {
                 <ListGroup.Item>{contact.email_address}</ListGroup.Item>
                 <ListGroup.Item>{contact.contact_type}</ListGroup.Item>
                 <ListGroup.Item>
-                  <Button className="custom-all-btn" onClick={openUpdateContactModal}>
+                  <Button className="custom-all-btn" onClick={() => openUpdateContactModal(contact)}>
                     Update Contact{" "}
                   </Button>
                 </ListGroup.Item>
@@ -113,12 +119,23 @@ function Contacts() {
                 </ListGroup.Item>
               </ListGroup>
             </Card>
-            <UpdateContactModal show={showUpdateContactModal} contact={contact} onUpdate={handleContactUpdate} />
             <br />
           </section>
         ))}
       </Row>
       <NewContact show={showAddContactModal} onHide={() => setShowAddContactModal(false)} onSave={handleAddContact} />
+
+      {editedContact && (
+        <UpdateContactModal
+          show={showUpdateContactModal}
+          onHide={() => {
+            setShowUpdateContactModal(false);
+            setEditedContact(null);
+          }}
+          contact={editedContact}
+          onUpdate={handleUpdateContact}
+        />
+      )}
     </div>
   );
 }

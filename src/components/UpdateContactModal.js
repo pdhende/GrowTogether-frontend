@@ -5,7 +5,7 @@ import Form from "react-bootstrap/Form";
 import axios from "axios";
 
 const UpdateContactModal = ({ show, onHide, contact, onUpdate }) => {
-  const [editedcontact, setEditedcontact] = useState({
+  const [editedContact, setEditedContact] = useState({
     name: contact.name,
     email_address: contact.email_address,
     contact_type: contact.contact_type,
@@ -13,7 +13,7 @@ const UpdateContactModal = ({ show, onHide, contact, onUpdate }) => {
 
   const handleUpdate = () => {
     axios
-      .put(`http://localhost:3000/contacts/${contact.id}.json`, editedcontact)
+      .put(`http://localhost:3000/contacts/${contact.id}.json`, editedContact)
       .then((response) => {
         onUpdate(response.data); // Pass the updated contact data to the parent component
         window.location.href = "/contacts";
@@ -38,16 +38,16 @@ const UpdateContactModal = ({ show, onHide, contact, onUpdate }) => {
             <Form.Label>Name</Form.Label>
             <Form.Control
               type="text"
-              value={editedcontact.name}
-              onChange={(e) => setEditedcontact({ ...editedcontact, name: e.target.value })}
+              value={editedContact.name}
+              onChange={(e) => setEditedContact({ ...editedContact, name: e.target.value })}
             />
           </Form.Group>
           <Form.Group>
             <Form.Label>Contact Type</Form.Label>
             <Form.Control
               as="select" // Set the input type to "select"
-              value={editedcontact.contact_type}
-              onChange={(e) => setEditedcontact({ ...editedcontact, contact_type: e.target.value })}
+              value={editedContact.contact_type}
+              onChange={(e) => setEditedContact({ ...editedContact, contact_type: e.target.value })}
             >
               <option value="Family">Family</option>
               <option value="School">School</option>
@@ -59,8 +59,8 @@ const UpdateContactModal = ({ show, onHide, contact, onUpdate }) => {
             <Form.Label>Email Address</Form.Label>
             <Form.Control
               type="text"
-              value={editedcontact.email_address}
-              onChange={(e) => setEditedcontact({ ...editedcontact, email_address: e.target.value })}
+              value={editedContact.email_address}
+              onChange={(e) => setEditedContact({ ...editedContact, email_address: e.target.value })}
             />
           </Form.Group>
         </Form>

@@ -3,22 +3,19 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-const NewContact = ({ show, onHide, onSave }) => {
+function NewContact({ show, onHide, onSave }) {
   const [newContact, setNewContact] = useState({
     name: "",
     email_address: "",
-    description: "",
+    contact_type: "Family",
   });
 
   const handleSave = () => {
-    onSave({
-      name: newContact.name,
-      email_address: newContact.email_address,
-      description: newContact.description,
-    });
-    onHide();
+    if (newContact.name && newContact.email_address && newContact.contact_type) {
+      onSave(newContact);
+      window.location.href = "/contacts";
+    }
   };
-
   return (
     <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton>
@@ -30,6 +27,7 @@ const NewContact = ({ show, onHide, onSave }) => {
             <Form.Label>Name</Form.Label>
             <Form.Control
               type="text"
+              placeholder="Name"
               value={newContact.name}
               onChange={(e) => setNewContact({ ...newContact, name: e.target.value })}
             />
@@ -38,6 +36,7 @@ const NewContact = ({ show, onHide, onSave }) => {
             <Form.Label>Email Address</Form.Label>
             <Form.Control
               type="text"
+              placeholder="email address"
               value={newContact.email_address}
               onChange={(e) => setNewContact({ ...newContact, email_address: e.target.value })}
             />
@@ -47,6 +46,7 @@ const NewContact = ({ show, onHide, onSave }) => {
             <Form.Control
               as="select" // Set the input type to "select"
               value={newContact.contact_type}
+              placeholder="contact type"
               onChange={(e) => setNewContact({ ...newContact, contact_type: e.target.value })}
             >
               <option value="Empty">-- Choose a Contact Type --</option>
@@ -68,6 +68,6 @@ const NewContact = ({ show, onHide, onSave }) => {
       </Modal.Footer>
     </Modal>
   );
-};
+}
 
 export default NewContact;
