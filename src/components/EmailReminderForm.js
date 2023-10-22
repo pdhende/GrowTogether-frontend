@@ -10,6 +10,20 @@ function EmailReminderForm({ show, onHide, reminder }) {
   const [recipient, setRecipient] = useState("");
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState("");
+  const [contacts, setContacts] = useState([]); // State variable to store contacts
+
+  // Fetch contacts data when the component mounts
+  useEffect(() => {
+    axios
+      .get("http://localhost:3000/contacts.json")
+      .then((response) => {
+        // Store contacts in the state
+        setContacts(response.data);
+      })
+      .catch((error) => {
+        console.error("Error fetching contacts:", error);
+      });
+  }, []);
 
   useEffect(() => {
     if (reminder) {
@@ -36,6 +50,9 @@ function EmailReminderForm({ show, onHide, reminder }) {
           type: "success",
           confirmButtonText: "OK!",
           allowOutsideClick: true,
+        }).then(() => {
+          // Close the modal after the "OK" button is clicked
+          onHide();
         });
         console.log("200 OK: ", response.data.message);
       })
@@ -43,7 +60,6 @@ function EmailReminderForm({ show, onHide, reminder }) {
         console.error("Error saving article:", error);
       });
   };
-
   return (
     <Modal show={show}>
       <Modal.Header>
@@ -57,11 +73,17 @@ function EmailReminderForm({ show, onHide, reminder }) {
           <Form.Group>
             <Form.Label>Send to:</Form.Label>
             <Form.Control
-              type="text"
-              placeholder="Recipient"
+              as="select" // Use a select input for recipients
               value={recipient}
               onChange={(e) => setRecipient(e.target.value)}
-            />
+            >
+              <option value="">Select a recipient</option>
+              {contacts.map((contact) => (
+                <option key={contact.id} value={contact.email_address}>
+                  {contact.contact_type}: {contact.name}
+                </option>
+              ))}
+            </Form.Control>
           </Form.Group>
           <Form.Group>
             <Form.Label>Subject:</Form.Label>

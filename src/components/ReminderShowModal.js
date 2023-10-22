@@ -16,6 +16,10 @@ const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
     setShowEditModal(true);
   };
 
+  const closeEditModal = () => {
+    setShowEditModal(false);
+  };
+
   const handleDelete = () => {
     swal({
       title: "Are you sure?",
@@ -82,7 +86,7 @@ const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
         <br />
         <br />
 
-        <EditReminderModal show={showEditModal} reminder={reminder} onUpdate={onUpdate} onHide={onHide} />
+        <EditReminderModal show={showEditModal} reminder={reminder} onUpdate={onUpdate} onHide={closeEditModal} />
       </Modal.Body>
       <Modal.Footer>
         <Button className="green-btn" onClick={() => setShowEmailModal(true)}>
