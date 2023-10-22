@@ -55,7 +55,7 @@ function Reminders() {
   }
 
   return (
-    <div style={{ margin: "1in" }}>
+    <div>
       <Header />
       <h1>Reminders</h1> <br />
       <Button className="add-reminder-btn" onClick={() => setShowAddModal(true)}>
@@ -63,25 +63,27 @@ function Reminders() {
       </Button>
       <br />
       <br />
-      <Calendar
-        localizer={localizer}
-        events={reminders.map((reminder) => {
-          return {
-            start: moment(reminder.date).toDate(),
-            end: moment(reminder.date).toDate(),
-            child_name: reminder.child_name,
-            title: reminder.description,
-          };
-        })}
-        startAccessor="start"
-        endAccessor="end"
-        style={{ height: 500 }}
-        onSelectEvent={(event) => {
-          // When a reminder is clicked, set it as the selected reminder
-          setSelectedReminder(reminders.find((r) => r.description === event.title));
-          setShowReminderDetailsModal(true);
-        }}
-      />
+      <div style={{ margin: "1in" }}>
+        <Calendar
+          localizer={localizer}
+          events={reminders.map((reminder) => {
+            return {
+              start: moment(reminder.date).toDate(),
+              end: moment(reminder.date).toDate(),
+              child_name: reminder.child_name,
+              title: reminder.description,
+            };
+          })}
+          startAccessor="start"
+          endAccessor="end"
+          style={{ height: 500 }}
+          onSelectEvent={(event) => {
+            // When a reminder is clicked, set it as the selected reminder
+            setSelectedReminder(reminders.find((r) => r.description === event.title));
+            setShowReminderDetailsModal(true);
+          }}
+        />
+      </div>
       <ReminderShowModal
         show={showReminderDetailsModal}
         onHide={() => setShowReminderDetailsModal(false)}
