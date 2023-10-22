@@ -84,10 +84,12 @@ const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
 
         <EditReminderModal show={showEditModal} reminder={reminder} onUpdate={onUpdate} onHide={onHide} />
       </Modal.Body>
-      <Modal.Footer></Modal.Footer>
-      <Button className="send-email-btn" onClick={() => setShowEmailModal(true)}>
-        Send Email
-      </Button>
+      <Modal.Footer>
+        <Button className="green-btn" onClick={() => setShowEmailModal(true)}>
+          Share
+        </Button>
+      </Modal.Footer>
+
       <EmailReminderForm show={showEmailModal} onHide={() => setShowEmailModal(false)} reminder={reminder} />
     </Modal>
   );

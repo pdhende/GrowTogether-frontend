@@ -85,11 +85,12 @@ function EmailReminderForm({ show, onHide, reminder }) {
             />
           </Form.Group>
         </Form>
-        <Button className="send-email-btn" onClick={sendEmail}>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button className="green-btn" onClick={sendEmail}>
           Send
         </Button>
-      </Modal.Body>
-      <Modal.Footer></Modal.Footer>
+      </Modal.Footer>
       <Button className="add-reminder-btn" onClick={onHide}>
         Cancle
       </Button>

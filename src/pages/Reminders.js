@@ -55,7 +55,7 @@ function Reminders() {
   }
 
   return (
-    <div>
+    <div style={{ margin: "1in" }}>
       <Header />
       <h1>Reminders</h1> <br />
       <Button className="add-reminder-btn" onClick={() => setShowAddModal(true)}>

@@ -95,7 +95,7 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button className="custom-save-btn" onClick={handleUpdate}>
+        <Button className="green-btn" onClick={handleUpdate}>
           Save Changes
         </Button>
       </Modal.Footer>
