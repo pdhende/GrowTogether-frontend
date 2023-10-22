@@ -13,7 +13,7 @@ function NewContact({ show, onHide, onSave }) {
   const handleSave = () => {
     if (newContact.name && newContact.email_address && newContact.contact_type) {
       onSave(newContact);
-      window.location.href = "/contacts";
+      onHide();
     }
   };
   return (
@@ -57,15 +57,15 @@ function NewContact({ show, onHide, onSave }) {
             </Form.Control>
           </Form.Group>
         </Form>
-        <Button className="custom-save-btn" onClick={handleSave}>
-          Save Contact
-        </Button>
       </Modal.Body>
       <Modal.Footer>
-        <Button className="add-reminder-btn" onClick={onHide}>
-          Close
+        <Button className="green-btn" onClick={handleSave}>
+          Save Contact
         </Button>
       </Modal.Footer>
+      <Button className="blue-btn" onClick={onHide}>
+        Cancel
+      </Button>
     </Modal>
   );
 }

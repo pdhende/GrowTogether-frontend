@@ -58,12 +58,15 @@ function Reminders() {
     <div>
       <Header />
       <h1>Reminders</h1> <br />
-      <Button className="add-reminder-btn" onClick={() => setShowAddModal(true)}>
+      <Button
+        className="blue-btn"
+        style={{ fontSize: "medium", float: "left", marginLeft: "0.5in" }}
+        onClick={() => setShowAddModal(true)}
+      >
         Add Reminder
       </Button>
       <br />
-      <br />
-      <div style={{ margin: "1in" }}>
+      <div style={{ marginLeft: "0.5in", marginRight: "0.5in", marginBottom: "0.5in", marginTop: "0.25in" }}>
         <Calendar
           localizer={localizer}
           events={reminders.map((reminder) => {

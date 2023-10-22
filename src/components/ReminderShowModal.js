@@ -52,12 +52,9 @@ const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
   };
 
   return (
-    <Modal show={show}>
-      <Modal.Header>
+    <Modal show={show} onHide={onHide}>
+      <Modal.Header closeButton>
         <Modal.Title>Reminder Details</Modal.Title>
-        <Button className="add-reminder-btn" onClick={onHide}>
-          Close
-        </Button>
       </Modal.Header>
       <Modal.Body>
         <p>
@@ -75,7 +72,7 @@ const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
         <p>
           <strong>Date and Time:</strong> <br /> {moment(reminder?.date).format("MMMM D, YYYY h:mm A")}
         </p>
-        <Button className="edit-reminder-btn" onClick={openEditModal}>
+        <Button className="blue-btn" onClick={openEditModal}>
           Edit
         </Button>
         <br />

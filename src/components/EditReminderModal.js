@@ -38,17 +38,14 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
         console.log("200 OK: ", response.data.message);
       })
       .catch((error) => {
-        console.error("Error saving article:", error);
+        console.error("Error saving edits:", error);
       });
   };
 
   return (
-    <Modal show={show}>
-      <Modal.Header>
+    <Modal show={show} onHide={onHide}>
+      <Modal.Header closeButton>
         <Modal.Title>Edit Reminder</Modal.Title>
-        <Button className="add-reminder-btn" onClick={onHide}>
-          Close
-        </Button>
       </Modal.Header>
       <Modal.Body>
         <Form>
@@ -110,7 +107,7 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
           Save Changes
         </Button>
       </Modal.Footer>
-      <Button className="edit-reminder-btn" onClick={onHide}>
+      <Button className="blue-btn" onClick={onHide}>
         Cancel
       </Button>
     </Modal>

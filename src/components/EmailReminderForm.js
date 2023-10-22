@@ -8,6 +8,7 @@ import axios from "axios";
 
 function EmailReminderForm({ show, onHide, reminder }) {
   const [recipient, setRecipient] = useState("");
+  const [customRecipient, setCustomRecipient] = useState("");
   const [subject, setSubject] = useState("");
   const [body, setBody] = useState("");
   const [contacts, setContacts] = useState([]); // State variable to store contacts
@@ -36,9 +37,11 @@ function EmailReminderForm({ show, onHide, reminder }) {
   }, [reminder]);
 
   const sendEmail = () => {
+    const recipientToUse = customRecipient || recipient;
+
     axios
       .post("http://localhost:3000/send_email", {
-        recipient,
+        recipient: recipientToUse,
         subject,
         body,
       })
@@ -51,49 +54,47 @@ function EmailReminderForm({ show, onHide, reminder }) {
           confirmButtonText: "OK!",
           allowOutsideClick: true,
         }).then(() => {
-          // Close the modal after the "OK" button is clicked
           onHide();
         });
         console.log("200 OK: ", response.data.message);
       })
       .catch((error) => {
-        console.error("Error saving article:", error);
+        console.error("Error sending email:", error);
       });
   };
+
   return (
-    <Modal show={show}>
-      <Modal.Header>
+    <Modal show={show} onHide={onHide}>
+      <Modal.Header closeButton>
         <Modal.Title>Send Email</Modal.Title>
-        <Button className="add-reminder-btn" onClick={onHide}>
-          Close
-        </Button>
       </Modal.Header>
       <Modal.Body>
         <Form>
           <Form.Group>
             <Form.Label>Send to:</Form.Label>
-            <Form.Control
-              as="select" // Use a select input for recipients
-              value={recipient}
-              onChange={(e) => setRecipient(e.target.value)}
-            >
-              <option value="">Select a recipient</option>
+            <Form.Control as="select" value={recipient} onChange={(e) => setRecipient(e.target.value)}>
+              <option value="">-- Select a recipient --</option>
               {contacts.map((contact) => (
                 <option key={contact.id} value={contact.email_address}>
-                  {contact.contact_type}: {contact.name}
+                  {contact.name}
                 </option>
               ))}
+              <option value="other">Other</option>
             </Form.Control>
           </Form.Group>
-          <Form.Group>
-            <Form.Label>Subject:</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Subject"
-              value={subject}
-              onChange={(e) => setSubject(e.target.value)}
-            />
-          </Form.Group>
+
+          {recipient === "other" && (
+            <Form.Group>
+              <Form.Label>Recipient's Email:</Form.Label>
+              <Form.Control
+                type="text"
+                placeholder="Recipient's Email"
+                value={customRecipient}
+                onChange={(e) => setCustomRecipient(e.target.value)}
+              />
+            </Form.Group>
+          )}
+
           <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
             <Form.Label>Message</Form.Label>
             <Form.Control
@@ -113,7 +114,7 @@ function EmailReminderForm({ show, onHide, reminder }) {
           Send
         </Button>
       </Modal.Footer>
-      <Button className="add-reminder-btn" onClick={onHide}>
+      <Button className="blue-btn" onClick={onHide}>
         Cancle
       </Button>
     </Modal>

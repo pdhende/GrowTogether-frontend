@@ -16,15 +16,11 @@ const UpdateContactModal = ({ show, onHide, contact, onUpdate }) => {
       .put(`http://localhost:3000/contacts/${contact.id}.json`, editedContact)
       .then((response) => {
         onUpdate(response.data); // Pass the updated contact data to the parent component
-        window.location.href = "/contacts";
+        onHide();
       })
       .catch((error) => {
         console.error("Error updating contact:", error);
       });
-  };
-
-  const refreshWindow = () => {
-    window.location.href = "/contacts";
   };
 
   return (
@@ -66,11 +62,11 @@ const UpdateContactModal = ({ show, onHide, contact, onUpdate }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        <Button className="custom-all-btn" onClick={handleUpdate}>
+        <Button className="green-btn" onClick={handleUpdate}>
           Save Changes
         </Button>
       </Modal.Footer>
-      <Button className="custom-save-btn" onClick={refreshWindow}>
+      <Button className="blue-btn" onClick={onHide}>
         Cancel
       </Button>
     </Modal>
