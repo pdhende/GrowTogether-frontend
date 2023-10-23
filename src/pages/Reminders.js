@@ -58,30 +58,35 @@ function Reminders() {
     <div>
       <Header />
       <h1>Reminders</h1> <br />
-      <Button className="add-reminder-btn" onClick={() => setShowAddModal(true)}>
+      <Button
+        className="blue-btn"
+        style={{ fontSize: "medium", float: "left", marginLeft: "0.5in" }}
+        onClick={() => setShowAddModal(true)}
+      >
         Add Reminder
       </Button>
       <br />
-      <br />
-      <Calendar
-        localizer={localizer}
-        events={reminders.map((reminder) => {
-          return {
-            start: moment(reminder.date).toDate(),
-            end: moment(reminder.date).toDate(),
-            child_name: reminder.child_name,
-            title: reminder.description,
-          };
-        })}
-        startAccessor="start"
-        endAccessor="end"
-        style={{ height: 500 }}
-        onSelectEvent={(event) => {
-          // When a reminder is clicked, set it as the selected reminder
-          setSelectedReminder(reminders.find((r) => r.description === event.title));
-          setShowReminderDetailsModal(true);
-        }}
-      />
+      <div style={{ marginLeft: "0.5in", marginRight: "0.5in", marginBottom: "0.5in", marginTop: "0.25in" }}>
+        <Calendar
+          localizer={localizer}
+          events={reminders.map((reminder) => {
+            return {
+              start: moment(reminder.date).toDate(),
+              end: moment(reminder.date).toDate(),
+              child_name: reminder.child_name,
+              title: reminder.description,
+            };
+          })}
+          startAccessor="start"
+          endAccessor="end"
+          style={{ height: 500 }}
+          onSelectEvent={(event) => {
+            // When a reminder is clicked, set it as the selected reminder
+            setSelectedReminder(reminders.find((r) => r.description === event.title));
+            setShowReminderDetailsModal(true);
+          }}
+        />
+      </div>
       <ReminderShowModal
         show={showReminderDetailsModal}
         onHide={() => setShowReminderDetailsModal(false)}

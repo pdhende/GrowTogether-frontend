@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import DatePicker from "react-datepicker";
 import axios from "axios";
+import swal from "sweetalert";
 import "react-datepicker/dist/react-datepicker.css";
 
 const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
@@ -20,15 +21,25 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
       .put(`http://localhost:3000/reminders/${reminder.id}.json`, editedReminder)
       .then((response) => {
         onUpdate(response.data); // Pass the updated reminder data to the parent component
-        window.location.href = "/reminders";
+        // window.location.href = "/reminders";
+      })
+      .then((response) => {
+        swal({
+          title: "Done!",
+          text: "Reminder Updated",
+          icon: "success",
+          type: "success",
+          confirmButtonText: "OK!",
+          allowOutsideClick: true,
+        }).then(() => {
+          // Close the modal after the "OK" button is clicked
+          onHide();
+        });
+        console.log("200 OK: ", response.data.message);
       })
       .catch((error) => {
-        console.error("Error updating reminder:", error);
+        console.error("Error saving edits:", error);
       });
-  };
-
-  const refreshWindow = () => {
-    window.location.href = "/reminders";
   };
 
   return (
@@ -77,6 +88,7 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
               type="text"
               value={editedReminder.notes}
               onChange={(e) => setEditedReminder({ ...editedReminder, notes: e.target.value })}
+              style={{ height: "200px" }}
             />
           </Form.Group>
           <Form.Group>
@@ -91,14 +103,11 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
         </Form>
       </Modal.Body>
       <Modal.Footer>
-        {/* <Button className="edit-reminder-btn" onClick={onHide}>
-          Close
-        </Button> */}
-        <Button className="custom-save-btn" onClick={handleUpdate}>
+        <Button className="green-btn" onClick={handleUpdate}>
           Save Changes
         </Button>
       </Modal.Footer>
-      <Button className="edit-reminder-btn" onClick={refreshWindow}>
+      <Button className="blue-btn" onClick={onHide}>
         Cancel
       </Button>
     </Modal>

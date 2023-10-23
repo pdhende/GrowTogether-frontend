@@ -3,7 +3,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import moment from "moment";
 import EditReminderModal from "./EditReminderModal";
-import EmailForm from "../components/EmailForm";
+import EmailReminderForm from "./EmailReminderForm";
 
 import axios from "axios";
 import swal from "sweetalert";
@@ -14,6 +14,10 @@ const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
 
   const openEditModal = () => {
     setShowEditModal(true);
+  };
+
+  const closeEditModal = () => {
+    setShowEditModal(false);
   };
 
   const handleDelete = () => {
@@ -68,7 +72,7 @@ const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
         <p>
           <strong>Date and Time:</strong> <br /> {moment(reminder?.date).format("MMMM D, YYYY h:mm A")}
         </p>
-        <Button className="edit-reminder-btn" onClick={openEditModal}>
+        <Button className="blue-btn" onClick={openEditModal}>
           Edit
         </Button>
         <br />
@@ -78,18 +82,16 @@ const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
         </Button>
         <br />
         <br />
-        <Button className="send-email-btn" onClick={() => setShowEmailModal(true)}>
-          Send Email
-        </Button>
 
-        <EditReminderModal show={showEditModal} reminder={reminder} onUpdate={onUpdate} />
+        <EditReminderModal show={showEditModal} reminder={reminder} onUpdate={onUpdate} onHide={closeEditModal} />
       </Modal.Body>
       <Modal.Footer>
-        <Button className="add-reminder-btn" onClick={onHide}>
-          Close
+        <Button className="green-btn" onClick={() => setShowEmailModal(true)}>
+          Share
         </Button>
       </Modal.Footer>
-      <EmailForm show={showEmailModal} onHide={() => setShowEmailModal(false)} reminder={reminder} />
+
+      <EmailReminderForm show={showEmailModal} onHide={() => setShowEmailModal(false)} reminder={reminder} />
     </Modal>
   );
 };

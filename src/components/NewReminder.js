@@ -88,15 +88,15 @@ const NewReminder = ({ show, onHide, onSave }) => {
 
           {/* Add more Form.Group for other reminder properties */}
         </Form>
-        <Button className="custom-save-btn" onClick={handleSave}>
-          Save Reminder
-        </Button>
       </Modal.Body>
       <Modal.Footer>
-        <Button className="add-reminder-btn" onClick={onHide}>
-          Close
+        <Button className="green-btn" onClick={handleSave}>
+          Save Reminder
         </Button>
       </Modal.Footer>
+      <Button className="blue-btn" onClick={onHide}>
+        Cancel
+      </Button>
     </Modal>
   );
 };
