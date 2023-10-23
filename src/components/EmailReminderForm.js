@@ -104,7 +104,7 @@ function EmailReminderForm({ show, onHide, reminder }) {
               placeholder="Email Body"
               value={body}
               onChange={(e) => setBody(e.target.value)}
-              style={{ height: "300px" }}
+              style={{ height: "400px" }}
             />
           </Form.Group>
         </Form>
@@ -115,7 +115,7 @@ function EmailReminderForm({ show, onHide, reminder }) {
         </Button>
       </Modal.Footer>
       <Button className="blue-btn" onClick={onHide}>
-        Cancle
+        Cancel
       </Button>
     </Modal>
   );
