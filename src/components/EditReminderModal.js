@@ -33,7 +33,7 @@ const EditReminderModal = ({ show, onHide, reminder, onUpdate }) => {
           allowOutsideClick: true,
         }).then(() => {
           // Close the modal after the "OK" button is clicked
-          onHide();
+          window.location.reload();
         });
         console.log("200 OK: ", response.data.message);
       })
