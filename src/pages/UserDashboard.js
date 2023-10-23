@@ -72,6 +72,15 @@ export function UserDashboard() {
                           <Col>
                             <span style={{ fontSize: "1.3rem" }}>{user.email}</span>
                           </Col>
+                          <br />
+                          <br />
+                          <Col>
+                            <Button className="custom-btn custom-all-btn btn-rounded">
+                              <Link to="/contacts" className="custom-link-dashboard">
+                                <span style={{ fontSize: "1.2rem" }}>Contact List</span>
+                              </Link>
+                            </Button>
+                          </Col>
                         </div>
                       ))
                     ) : (
