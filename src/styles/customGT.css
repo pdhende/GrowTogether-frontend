@@ -310,3 +310,19 @@
   border: 0.3rem solid white;
   color: white
 }
+
+.send-email-btn {
+  color: white;
+  font-size: small;
+  background-color: #4e9c86;
+  border: 0.1rem solid #4e9c86;
+}
+
+.send-email-btn:hover,
+.send-email-btn:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em;
+  transform: translateY(-0.25em);
+  background-color: white;
+  border: 0.1rem solid #4e9c86;
+  color: #4e9c86
+}

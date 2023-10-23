@@ -3,11 +3,14 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import moment from "moment";
 import EditReminderModal from "./EditReminderModal";
+import EmailForm from "../components/EmailForm";
+
 import axios from "axios";
 import swal from "sweetalert";
 
 const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
   const [showEditModal, setShowEditModal] = useState(false);
+  const [showEmailModal, setShowEmailModal] = useState(false);
 
   const openEditModal = () => {
     setShowEditModal(true);
@@ -73,6 +76,11 @@ const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
         <Button className="custom-save-btn" onClick={handleDelete}>
           Delete
         </Button>
+        <br />
+        <br />
+        <Button className="send-email-btn" onClick={() => setShowEmailModal(true)}>
+          Send Email
+        </Button>
 
         <EditReminderModal show={showEditModal} reminder={reminder} onUpdate={onUpdate} />
       </Modal.Body>
@@ -81,6 +89,7 @@ const ReminderShowModal = ({ show, onHide, reminder, onUpdate }) => {
           Close
         </Button>
       </Modal.Footer>
+      <EmailForm show={showEmailModal} onHide={() => setShowEmailModal(false)} reminder={reminder} />
     </Modal>
   );
 };
