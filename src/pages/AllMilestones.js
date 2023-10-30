@@ -65,6 +65,7 @@ function AllMilestones() {
                 <Row>Title: {milestone.title}</Row>
                 <Row>Description: {milestone.description}</Row>
                 <Row>Category: {milestone.milestone_category}</Row>
+                <Row><img src={milestone.image} width="300" height="auto"/></Row>
                 <Row>
                   Date: {format(parseISO(milestone.date), "MM/dd/yyyy")}
                   {/* {milestone.date} */}

@@ -93,7 +93,8 @@ function Contacts() {
   return (
     <div>
       <Header />
-      <div className="background-img-resources-pg">
+
+      <div className="background-img">
         <br />
         <section className="container">
           <h1>Contact List</h1>
