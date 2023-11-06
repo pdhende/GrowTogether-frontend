@@ -5,7 +5,7 @@ import Header from "../components/Header";
 import { Button, Card } from "react-bootstrap";
 import moment from "moment";
 import AddPhotoAlbum from "../components/AddPhotoAlbum";
-import { MDBContainer, MDBCol, MDBRow } from 'mdb-react-ui-kit';
+import { MDBContainer, MDBCol, MDBRow } from "mdb-react-ui-kit";
 import swal from "sweetalert";
 import EmailPhotoModal from "../components/EmailPhotoModal";
 
@@ -19,15 +19,14 @@ function PhotoAlbum() {
     setSelectedPhoto(photo);
     setShowEmailModal(true);
   };
-  
-  
+
   const handleIndexPhotos = () => {
     //update later to call to AWS S3 bucket
     axios.get("http://localhost:3000/photos.json").then((response) => {
       console.log(response.data);
       setPhotos(response.data);
     });
-  }
+  };
 
   const openAddPhotoAlbum = () => {
     console.log("Opening Add Photo Modal");
@@ -39,63 +38,63 @@ function PhotoAlbum() {
     axios
       .post("http://localhost:3000/photos.json", newPhoto)
       .then((response) => {
-          swal({
-            title: "Done!",
-            text: "Photo has been added to your album",
-            icon: "success",
-            type: "success",
-            confirmButtonText: "OK!",
-            allowOutsideClick: true,
-          });
-          handleIndexPhotos();
-          setShowAddPhotoModal(false);
-          console.log("Photo saved:", response.data);
-        })
-        .catch((error) => {
-          console.error("Error saving article:", error);
+        swal({
+          title: "Done!",
+          text: "Photo has been added to your album",
+          icon: "success",
+          type: "success",
+          confirmButtonText: "OK!",
+          allowOutsideClick: true,
         });
+        handleIndexPhotos();
+        setShowAddPhotoModal(false);
+        console.log("Photo saved:", response.data);
+      })
+      .catch((error) => {
+        console.error("Error saving article:", error);
+      });
   };
 
   useEffect(() => {
     handleIndexPhotos();
   }, []);
-  
 
-  return(
+  return (
     <div>
       <Header />
-    <h1>Photo Album</h1>
-    <br />
-    <Button className="custom-all-btn" onClick={openAddPhotoAlbum}>
-      Add Photo
-    </Button>
+      <div className="background-img-resources-pg">
+        <h1>Photo Album</h1>
+        <br />
+        <Button className="custom-all-btn" onClick={openAddPhotoAlbum}>
+          Add Photo
+        </Button>
 
-<MDBContainer className="mt-4">
-        <MDBRow>
-          {photos.map((photo, index) => (
-            <MDBCol md={4} key={index}>
-              <Card style={{ width: '100%' }}>
-                <Card.Img variant="top" src={photo.image} />
-                <Card.Body>
-                  <Card.Text>
-                    {photo.description}<br /> {moment(photo?.date).format('MMMM D, YYYY h:mm A')}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-              <Button onClick={() => openEmailModal(photo)}>Send Email</Button>
-            </MDBCol>
-          ))}
-        </MDBRow>
-      </MDBContainer>
+        <MDBContainer className="mt-4">
+          <MDBRow>
+            {photos.map((photo, index) => (
+              <MDBCol md={4} key={index}>
+                <Card style={{ width: "100%" }}>
+                  <Card.Img variant="top" src={photo.image} />
+                  <Card.Body>
+                    <Card.Text>
+                      {photo.description}
+                      <br /> {moment(photo?.date).format("MMMM D, YYYY h:mm A")}
+                    </Card.Text>
+                  </Card.Body>
+                  <Button className="green-btn" onClick={() => openEmailModal(photo)}>
+                    Share
+                  </Button>
+                </Card>
+              </MDBCol>
+            ))}
+          </MDBRow>
+        </MDBContainer>
 
-      <EmailPhotoModal
-        show={showEmailModal}
-        onHide={() => setShowEmailModal(false)}
-        photo={selectedPhoto}
-      />
+        <EmailPhotoModal show={showEmailModal} onHide={() => setShowEmailModal(false)} photo={selectedPhoto} />
 
-    <AddPhotoAlbum show={showAddPhotoModal} onHide={() => setShowAddPhotoModal(false)} onSave={handleAddPhoto} />
-  </div>
+        <AddPhotoAlbum show={showAddPhotoModal} onHide={() => setShowAddPhotoModal(false)} onSave={handleAddPhoto} />
+      </div>
+    </div>
   );
-        };
+}
 export default PhotoAlbum;
