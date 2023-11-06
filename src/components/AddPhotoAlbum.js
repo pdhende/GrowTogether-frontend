@@ -1,21 +1,18 @@
 import React from "react";
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState } from "react";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import DatePicker from "react-datepicker";
 
 function AddPhotoAlbum({ show, onSave, onHide }) {
-  const [children, setChildren] = useState([]); 
-const [selectedChildId, setSelectedChildId] = useState(''); 
 
   const [newPhoto, setNewPhoto] = useState({
     image: "",
     description: "",
     date: new Date(),
-    child_id: selectedChildId,
-    milestone_id: "",
+    child_id: null, 
+    milestone_id: null, 
   });
 
   const handleSavePhoto = () => {
@@ -23,19 +20,14 @@ const [selectedChildId, setSelectedChildId] = useState('');
       image: newPhoto.image,
       description: newPhoto.description,
       date: newPhoto.date,
-      child_id: selectedChildId,
-      milestone_id: newPhoto.milestone_id,
     });
-      onHide();
-    };
-
-    useEffect(() => {
-      axios.get("http://localhost:3000/children.json").then((response) => {
-        setChildren(response.data);
-      });
-    }, []);
-
-    
+    setNewPhoto({
+      image: "",
+      description: "",
+      date: new Date(),
+    });
+    onHide();
+  };
 
   return (
     <Modal show={show} onHide={onHide}>
@@ -73,28 +65,6 @@ const [selectedChildId, setSelectedChildId] = useState('');
               dateFormat="Pp"
             />
           </Form.Group>
-          <Form.Label>Child</Form.Label>
-  <Form.Control
-    as="select"
-    value={selectedChildId}
-    onChange={(e) => setSelectedChildId(e.target.value)}
-  >
-    <option value="">-- Select a child --</option>
-    {children.map((child) => (
-      <option key={child.id} value={child.id}>
-        {child.name}
-      </option>
-    ))}
-  </Form.Control>
-            <Form.Group>
-            <Form.Label>milestone_id</Form.Label>
-            <Form.Control
-              type="number"
-              placeholder="milestone_id"
-              value={newPhoto.milestone_id}
-              onChange={(e) => setNewPhoto({ ...newPhoto, milestone_id: e.target.value })}
-            />
-            </Form.Group>
         </Form>
       </Modal.Body>
       <Modal.Footer>

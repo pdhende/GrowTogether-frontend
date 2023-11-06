@@ -1,7 +1,6 @@
 import React from "react";
-import { Row, Col, Button, Modal, Form } from "react-bootstrap";
+import { Row, Col, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
-// import { useParams } from "react-router-dom";
 import Header from "../components/Header";
 import { useLocation } from "react-router-dom";
 import MilestoneModal from "../components/MilestoneModal";
@@ -11,7 +10,7 @@ import parseISO from "date-fns/parseISO";
 
 function AllMilestones() {
   const { state } = useLocation();
-  const { childName, dob, childId, childProfile } = state.data;
+  const { childName, childId, childProfile } = state.data;
 
   const [msData, setMSData] = useState([]);
   const [error, setError] = useState("");
@@ -24,6 +23,7 @@ function AllMilestones() {
       .then((res) => setMSData(res.data))
       .catch((err) => {
         setError(err.message);
+        console.log(error);
       });
   }, []);
 
@@ -65,10 +65,9 @@ function AllMilestones() {
                 <Row>Title: {milestone.title}</Row>
                 <Row>Description: {milestone.description}</Row>
                 <Row>Category: {milestone.milestone_category}</Row>
-                <Row><img src={milestone.image} width="300" height="auto"/></Row>
+                {/* <Row><img src={milestone.image} width="300" height="auto"/></Row> */}
                 <Row>
                   Date: {format(parseISO(milestone.date), "MM/dd/yyyy")}
-                  {/* {milestone.date} */}
                 </Row>
                 <Row style={{ paddingTop: "2%" }}>
                   <Button
