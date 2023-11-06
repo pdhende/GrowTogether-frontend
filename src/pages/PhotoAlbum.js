@@ -5,6 +5,9 @@ import Header from "../components/Header";
 import { Button, Card, Row } from "react-bootstrap";
 import moment from "moment";
 import AddPhotoAlbum from "../components/AddPhotoAlbum";
+import { MDBContainer, MDBCol, MDBRow } from 'mdb-react-ui-kit';
+
+
 
 function PhotoAlbum() {
   const [photos, setPhotos] = useState([]);
@@ -38,6 +41,14 @@ function PhotoAlbum() {
     handleIndexPhotos();
   }, []);
   
+  const photoData = photos.map((photo) => {
+    return {
+      src: photo.image, // URL of the image
+      alt: photo.description, // Description of the image
+    };
+  });
+
+
   return(
     <div>
       <Header />
@@ -46,7 +57,7 @@ function PhotoAlbum() {
     <Button className="custom-all-btn" onClick={openAddPhotoAlbum}>
       Add Photo
     </Button>
-    <Row xs={1} md={3} className="g-4 justify-content-center">
+    {/* <Row xs={1} md={3} className="g-4 justify-content-center">
       {photos.map((photo, index) => (
         <div key={index}>
           <Card style={{ width: "18rem" }}>
@@ -59,7 +70,27 @@ function PhotoAlbum() {
           </Card>
         </div>
       ))}
-    </Row>
+    </Row> */}
+
+<MDBContainer className="mt-4">
+        <MDBRow>
+          {photos.map((photo, index) => (
+            <MDBCol md={4} key={index}>
+              <Card style={{ width: '100%' }}>
+                <Card.Img variant="top" src={photo.image} />
+                <Card.Body>
+                  <Card.Text>
+                    {photo.description}<br /> {moment(photo?.date).format('MMMM D, YYYY h:mm A')}
+                  </Card.Text>
+                </Card.Body>
+              </Card>
+            </MDBCol>
+          ))}
+        </MDBRow>
+      </MDBContainer>
+
+
+
     <AddPhotoAlbum show={showAddPhotoModal} onHide={() => setShowAddPhotoModal(false)} onSave={handleAddPhoto} />
   </div>
   );
