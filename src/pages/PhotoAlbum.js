@@ -7,12 +7,20 @@ import moment from "moment";
 import AddPhotoAlbum from "../components/AddPhotoAlbum";
 import { MDBContainer, MDBCol, MDBRow } from 'mdb-react-ui-kit';
 import swal from "sweetalert";
-
+import EmailPhotoModal from "../components/EmailPhotoModal";
 
 function PhotoAlbum() {
   const [photos, setPhotos] = useState([]);
   const [showAddPhotoModal, setShowAddPhotoModal] = useState(false);
+  const [showEmailModal, setShowEmailModal] = useState(false);
+  const [selectedPhoto, setSelectedPhoto] = useState(null);
 
+  const openEmailModal = (photo) => {
+    setSelectedPhoto(photo);
+    setShowEmailModal(true);
+  };
+  
+  
   const handleIndexPhotos = () => {
     //update later to call to AWS S3 bucket
     axios.get("http://localhost:3000/photos.json").then((response) => {
@@ -74,12 +82,17 @@ function PhotoAlbum() {
                   </Card.Text>
                 </Card.Body>
               </Card>
+              <Button onClick={() => openEmailModal(photo)}>Send Email</Button>
             </MDBCol>
           ))}
         </MDBRow>
       </MDBContainer>
 
-
+      <EmailPhotoModal
+        show={showEmailModal}
+        onHide={() => setShowEmailModal(false)}
+        photo={selectedPhoto}
+      />
 
     <AddPhotoAlbum show={showAddPhotoModal} onHide={() => setShowAddPhotoModal(false)} onSave={handleAddPhoto} />
   </div>
