@@ -9,6 +9,7 @@ import Resources from "./pages/Resources";
 import Favorites from "./pages/Favorites";
 import Reminders from "./pages/Reminders";
 import Contacts from "./pages/Contacts";
+import PhotoAlbum from "./pages/PhotoAlbum";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/reminders" element={<Reminders />} />
           <Route path="/contacts" element={<Contacts />} />
+          <Route path="/photos" element={<PhotoAlbum />} />
         </Routes>
       </Router>
     </div>

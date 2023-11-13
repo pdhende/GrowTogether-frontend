@@ -60,7 +60,7 @@ function Reminders() {
       <h1>Reminders</h1> <br />
       <Button
         className="blue-btn"
-        style={{ fontSize: "medium", float: "left", marginLeft: "0.5in" }}
+        style={{ fontSize: "medium", float: "center" }}
         onClick={() => setShowAddModal(true)}
       >
         Add Reminder
