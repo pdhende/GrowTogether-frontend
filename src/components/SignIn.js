@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Form, Button, Alert } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import { useState } from "react";
 import swal from "sweetalert";
 
@@ -12,7 +12,6 @@ if (jwt) {
 function SignIn() {
   const [userFormData, setUserFormData] = useState({ email: "", password: "" });
   const [validated] = useState(false);
-  const [showAlert, setShowAlert] = useState(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -20,7 +19,6 @@ function SignIn() {
   };
 
   const handleFormSubmit = async (event) => {
-    // check if form has everything (as per react-bootstrap docs)
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
       event.preventDefault();
@@ -29,13 +27,20 @@ function SignIn() {
 
     event.preventDefault();
     const params = new FormData(event.target);
+
     axios
       .post("http://localhost:3000/sessions.json", params)
       .then((response) => {
-        axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
-        localStorage.setItem("jwt", response.data.jwt);
+        axios.defaults.headers.common["Authorization"] =
+          "Bearer " + response.data.jwt;
+
+        const { jwt, user_id } = response.data;
+
+        localStorage.setItem("jwt", jwt);
+        localStorage.setItem("user_id", user_id);
+
         event.target.reset();
-        window.location.href = "/dashboard"; // Change this to redirect to dashboard page.
+        window.location.href = "/dashboard";
       })
       .catch((error) => {
         console.log(error.response);

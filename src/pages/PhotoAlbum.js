@@ -1,13 +1,20 @@
+import React from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Header from "../components/Header";
+import { Button, Card } from "react-bootstrap";
+import moment from "moment";
+import AddPhotoAlbum from "../components/AddPhotoAlbum";
+import { MDBContainer, MDBCol, MDBRow } from "mdb-react-ui-kit";
+import swal from "sweetalert";
+import EmailPhotoModal from "../components/EmailPhotoModal";
 import AWS from "aws-sdk";
-import React, { useEffect, useState } from "react";
-import { Row, Col } from "react-bootstrap";
 
 function PhotoAlbum() {
-  // Create state to store file
+  const [photos, setPhotos] = useState([]);
   const [file, setFile] = useState(null);
-  const [imageData, setImageData] = useState([]);
   const [error, setError] = useState(null);
-  const [displayFlag, setDisplayFlag] = useState(true);
+  const userId = localStorage.getItem("user_id");
 
   const setAWSVariables = () => {
     const S3_BUCKET = `${process.env.REACT_APP_BUCKET}`;
@@ -28,11 +35,11 @@ function PhotoAlbum() {
     return { s3, S3_BUCKET };
   };
 
-  useEffect(() => {
+  const handleIndexPhotos = () => {
     const { s3, S3_BUCKET } = setAWSVariables();
     console.log(S3_BUCKET);
 
-    const keyPrefix = "2";
+    const keyPrefix = userId;
     try {
       const params = {
         Bucket: S3_BUCKET,
@@ -52,20 +59,19 @@ function PhotoAlbum() {
           if (response) {
             const base64Image = response.Body.toString("base64");
             const imageSrc = `data:image/jpeg;base64,${base64Image}`;
-            setImageData((prevImgData) => [...prevImgData, imageSrc]);
+            setPhotos((prevPhotos) => [...prevPhotos, imageSrc]);
           }
         });
       });
     } catch (error) {
       setError(error.message);
     }
-  }, []);
+  };
 
-  // Function to upload file to s3
+  //update later to call to AWS S3 bucket
   const uploadFile = async () => {
     const { s3, S3_BUCKET } = setAWSVariables();
-    const keyPrefix = "2";
-    // const imgName = "otherImage";
+    const keyPrefix = userId;
 
     const params = {
       Bucket: S3_BUCKET,
@@ -77,35 +83,54 @@ function PhotoAlbum() {
 
     await upload.then((err, data) => {
       console.log(err);
-      alert("File uploaded successfully.");
+      swal({ text: "Photo uploaded successfully!", icon: "success" });
     });
   };
   // Function to handle file and store it to file state
   const handleFileChange = (e) => {
-    // Uploaded file
     const file = e.target.files[0];
-    // Changing file state
     setFile(file);
   };
 
+  useEffect(() => {
+    handleIndexPhotos();
+  }, []);
+
   return (
-    <div className="App">
-      <div>
-        <input type="file" onChange={handleFileChange} />
-        <button onClick={uploadFile}>Upload</button>
-      </div>
-      <div className="container">
-        {imageData.map((img) => {
-          return (
-            <>
-              <Row>
-                <Col md={1}>
-                  <img src={img} style={{ width: "25rem" }} alt="S3 Object" />
-                </Col>
-              </Row>
-            </>
-          );
-        })}
+    <div>
+      <Header />
+      <div className="background-img-resources-pg">
+        <h1>Photo Album</h1>
+        <br />
+        <div>
+          <Button className="custom-all-btn">
+            <input type="file" onChange={handleFileChange} />
+          </Button>
+          <Button className="custom-all-btn" onClick={uploadFile}>
+            Add Photo
+          </Button>
+        </div>
+
+        <MDBContainer className="mt-4">
+          <MDBRow>
+            {photos.map((photo, index) => (
+              <MDBCol md={4} key={index}>
+                <Card style={{ width: "100%" }}>
+                  <Card.Img variant="top" src={photo} />
+                  <Card.Body>
+                    <Card.Text></Card.Text>
+                  </Card.Body>
+                  <Button
+                    className="green-btn"
+                    // onClick={() => openEmailModal(photo)}
+                  >
+                    Share
+                  </Button>
+                </Card>
+              </MDBCol>
+            ))}
+          </MDBRow>
+        </MDBContainer>
       </div>
     </div>
   );

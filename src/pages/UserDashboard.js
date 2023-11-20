@@ -52,6 +52,7 @@ export function UserDashboard() {
                     {users.length > 0 ? (
                       users.map((user, index) => (
                         <div key={index}>
+                          <br />
                           {user.profilePicURL ? (
                             <img
                               src={user.profilePicURL}

@@ -1,14 +1,10 @@
 import React from "react";
-import { Card, Button, Form, Modal } from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
 import { useState } from "react";
 import axios from "axios";
 import swal from "sweetalert";
-import format from "date-fns/format";
-import { parseISO } from "date-fns";
 
 function MilestoneModal(props) {
-  const [msData, setMSData] = useState([]);
-  const [error, setError] = useState("");
   const [showEditModal, setShowEditModal] = useState(props.showEditModal);
   const [msProperty, setMSProperty] = useState(props.milestone);
 
@@ -30,10 +26,7 @@ function MilestoneModal(props) {
 
     event.preventDefault();
     axios
-      .patch(
-        "http://localhost:3000/milestones/" + msProperty.id + ".json",
-        msProperty
-      )
+      .put("http://localhost:3000/milestones/" + msProperty.id + ".json", msProperty)
       .then((response) => {
         window.location.href("/milestoneTracker");
       })
@@ -50,11 +43,7 @@ function MilestoneModal(props) {
   };
 
   return (
-    <Modal
-      className="centered-modal"
-      show={showEditModal}
-      onHide={() => setShowEditModal(false)}
-    >
+    <Modal className="centered-modal" show={showEditModal} onHide={() => setShowEditModal(false)}>
       <Modal.Header closeButton>
         <Modal.Title>Edit Milestone</Modal.Title>
       </Modal.Header>
@@ -112,11 +101,8 @@ function MilestoneModal(props) {
             />
           </Form.Group>
 
-          <Button
-            className="custom-btn custom-all-btn btn-rounded"
-            onClick={submitForm}
-          >
-            Submit
+          <Button className="custom-btn custom-all-btn btn-rounded" onClick={submitForm}>
+            Save Changes
           </Button>
         </Form>
       </Modal.Body>
