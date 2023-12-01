@@ -35,9 +35,8 @@ function PhotoAlbum() {
     return { s3, S3_BUCKET };
   };
 
-  const handleIndexPhotos = () => {
+  const handleIndexPhotos = async () => {
     const { s3, S3_BUCKET } = setAWSVariables();
-    console.log(S3_BUCKET);
 
     const keyPrefix = userId;
     try {
@@ -46,23 +45,29 @@ function PhotoAlbum() {
         Prefix: keyPrefix,
       };
 
-      s3.listObjectsV2(params, (err, data) => {
-        const imgData = data.Contents;
+      const data = await s3.listObjectsV2(params).promise();
+      // s3.listObjectsV2(params, async (err, data) => {
+      const imgData = data?.Contents;
 
-        imgData.map(async (img) => {
-          const objParams = {
-            Bucket: S3_BUCKET,
-            Key: img.Key,
-          };
+      if (!imgData) {
+        return;
+      }
 
-          const response = await s3.getObject(objParams).promise();
-          if (response) {
-            const base64Image = response.Body.toString("base64");
-            const imageSrc = `data:image/jpeg;base64,${base64Image}`;
-            setPhotos((prevPhotos) => [...prevPhotos, imageSrc]);
-          }
-        });
+      const getImagePromises = imgData?.map(async (img) => {
+        const objParams = {
+          Bucket: S3_BUCKET,
+          Key: img.Key,
+        };
+
+        const response = await s3.getObject(objParams).promise();
+        if (response) {
+          const base64Image = response.Body.toString("base64");
+          return `data:image/jpeg;base64,${base64Image}`;
+        }
       });
+
+      const imageSrcArr = await Promise.all(getImagePromises);
+      setPhotos(imageSrcArr.filter((img) => img));
     } catch (error) {
       setError(error.message);
     }
@@ -86,6 +91,7 @@ function PhotoAlbum() {
       swal({ text: "Photo uploaded successfully!", icon: "success" });
     });
   };
+
   // Function to handle file and store it to file state
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -94,6 +100,9 @@ function PhotoAlbum() {
 
   useEffect(() => {
     handleIndexPhotos();
+    return () => {
+      setPhotos([]);
+    };
   }, []);
 
   return (
@@ -111,21 +120,12 @@ function PhotoAlbum() {
           </Button>
         </div>
 
-        <MDBContainer className="mt-4">
+        <MDBContainer className="mt-4 mb-2">
           <MDBRow>
-            {photos.map((photo, index) => (
-              <MDBCol md={4} key={index}>
+            {photos?.map((photo, index) => (
+              <MDBCol md={4} key={index} style={{ marginBottom: "3%" }}>
                 <Card style={{ width: "100%" }}>
                   <Card.Img variant="top" src={photo} />
-                  <Card.Body>
-                    <Card.Text></Card.Text>
-                  </Card.Body>
-                  <Button
-                    className="green-btn"
-                    // onClick={() => openEmailModal(photo)}
-                  >
-                    Share
-                  </Button>
                 </Card>
               </MDBCol>
             ))}

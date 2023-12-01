@@ -6,13 +6,12 @@ import Form from "react-bootstrap/Form";
 import DatePicker from "react-datepicker";
 
 function AddPhotoAlbum({ show, onSave, onHide }) {
-
   const [newPhoto, setNewPhoto] = useState({
     image: "",
     description: "",
     date: new Date(),
-    child_id: null, 
-    milestone_id: null, 
+    child_id: null,
+    milestone_id: null,
   });
 
   const handleSavePhoto = () => {
@@ -38,11 +37,19 @@ function AddPhotoAlbum({ show, onSave, onHide }) {
         <Form>
           <Form.Group>
             <Form.Label>Image</Form.Label>
-            <Form.Control
+            {/* <Form.Control
               type="text"
               placeholder="URL (will be form later)"
               value={newPhoto.image}
               onChange={(e) => setNewPhoto({ ...newPhoto, image: e.target.value })}
+            /> */}
+            <Form.Control
+              type="file"
+              // placeholder="URL (will be form later)"
+              // value={newPhoto.image}
+              onChange={(e) =>
+                setNewPhoto({ ...newPhoto, image: e.target.value })
+              }
             />
           </Form.Group>
           <Form.Group>
@@ -51,10 +58,12 @@ function AddPhotoAlbum({ show, onSave, onHide }) {
               type="text"
               placeholder="Description"
               value={newPhoto.description}
-              onChange={(e) => setNewPhoto({ ...newPhoto, description: e.target.value })}
+              onChange={(e) =>
+                setNewPhoto({ ...newPhoto, description: e.target.value })
+              }
             />
-            </Form.Group>
-            <Form.Group>
+          </Form.Group>
+          <Form.Group>
             <Form.Label>Date</Form.Label>
             <DatePicker
               selected={newPhoto.date}
@@ -76,7 +85,7 @@ function AddPhotoAlbum({ show, onSave, onHide }) {
         Cancel
       </Button>
     </Modal>
-  )
+  );
 }
 
 export default AddPhotoAlbum;
