@@ -34,10 +34,10 @@ function SignIn() {
         axios.defaults.headers.common["Authorization"] =
           "Bearer " + response.data.jwt;
 
-        const { jwt, user_id } = response.data;
+        const { jwt, userId } = response.data;
 
         localStorage.setItem("jwt", jwt);
-        localStorage.setItem("user_id", user_id);
+        localStorage.setItem("userId", userId);
 
         event.target.reset();
         window.location.href = "/dashboard";

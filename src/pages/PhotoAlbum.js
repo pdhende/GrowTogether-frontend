@@ -135,5 +135,4 @@ function PhotoAlbum() {
     </div>
   );
 }
-
 export default PhotoAlbum;

@@ -37,16 +37,10 @@ function AddPhotoAlbum({ show, onSave, onHide }) {
         <Form>
           <Form.Group>
             <Form.Label>Image</Form.Label>
-            {/* <Form.Control
+            <Form.Control
               type="text"
               placeholder="URL (will be form later)"
               value={newPhoto.image}
-              onChange={(e) => setNewPhoto({ ...newPhoto, image: e.target.value })}
-            /> */}
-            <Form.Control
-              type="file"
-              // placeholder="URL (will be form later)"
-              // value={newPhoto.image}
               onChange={(e) =>
                 setNewPhoto({ ...newPhoto, image: e.target.value })
               }
