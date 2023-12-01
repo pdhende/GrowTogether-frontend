@@ -25,9 +25,15 @@ function MilestoneTracker() {
         <div className="background-img">
           <section className="container">
             <>
+              <h1>Milestone Tracker</h1>
+              <br />
               <Row style={{ justifyContent: "center", marginTop: "2%" }}>
                 {childrenData.map((child) => (
-                  <Col md={3} style={{ marginRight: "5%", marginTop: "5%" }} key={child.id}>
+                  <Col
+                    md={3}
+                    style={{ marginRight: "5%", marginTop: "5%" }}
+                    key={child.id}
+                  >
                     <ChildProfile
                       childName={child.name}
                       dob={child.dob}

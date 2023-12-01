@@ -27,7 +27,7 @@ function RSSFeed() {
       .then((response) => {
         swal({
           title: "Done!",
-          text: "Article has been added to your favorites",
+          text: "Article has been added saved!",
           icon: "success",
           type: "success",
           confirmButtonText: "OK!",
@@ -70,7 +70,10 @@ function RSSFeed() {
                     <Card.Text>{removeHTMLTags(item.description)}</Card.Text>
                   </Card.Body>
                   <Card.Body>
-                    <Button className="custom-all-btn btn-rounded" onClick={() => window.open(item.link, "_blank")}>
+                    <Button
+                      className="custom-all-btn btn-rounded"
+                      onClick={() => window.open(item.link, "_blank")}
+                    >
                       Full Article
                     </Button>{" "}
                     <Button

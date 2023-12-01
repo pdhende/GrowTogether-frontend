@@ -54,7 +54,7 @@ function Favorites() {
     <>
       <Header />
       <div className="background-img-resources-pg">
-        <h1>Favorites Page</h1>
+        <h1>Saved Articles</h1>
         <br />
         <Row xs={1} md={3} className="g-4 justify-content-center">
           {favorites.map((fav, index) => (
@@ -75,11 +75,17 @@ function Favorites() {
                   <Card.Text>{fav.description}</Card.Text>
                 </Card.Body>
                 <Card.Body>
-                  <Button className="custom-all-btn" onClick={() => window.open(fav.link, "_blank")}>
+                  <Button
+                    className="custom-all-btn"
+                    onClick={() => window.open(fav.link, "_blank")}
+                  >
                     Full Article
                   </Button>{" "}
-                  <Button className="custom-save-btn" onClick={() => handleDeleteFav(fav.id)}>
-                    Remove from Favorites
+                  <Button
+                    className="custom-save-btn"
+                    onClick={() => handleDeleteFav(fav.id)}
+                  >
+                    Remove
                   </Button>
                 </Card.Body>
               </Card>
