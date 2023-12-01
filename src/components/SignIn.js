@@ -31,7 +31,8 @@ function SignIn() {
     axios
       .post("http://localhost:3000/sessions.json", params)
       .then((response) => {
-        axios.defaults.headers.common["Authorization"] = "Bearer " + response.data.jwt;
+        axios.defaults.headers.common["Authorization"] =
+          "Bearer " + response.data.jwt;
 
         const { jwt, userId } = response.data;
 
