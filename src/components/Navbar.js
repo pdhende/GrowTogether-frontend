@@ -27,7 +27,7 @@ function Navigation() {
             Photo Album |
           </Nav.Link>
           <Nav.Link href="#favorites" as={Link} to="/favorites">
-            Favorites |
+            Saved Articles |
           </Nav.Link>
           <Nav.Link href="#logout" onClick={auth.logout}>
             Logout

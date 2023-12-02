@@ -1,6 +1,5 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import axios from "axios";
 import Header from "../components/Header";
 import { Button, Card } from "react-bootstrap";
 import moment from "moment";
@@ -14,6 +13,7 @@ function PhotoAlbum() {
   const [photos, setPhotos] = useState([]);
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
   const userId = localStorage.getItem("user_id");
 
   const setAWSVariables = () => {
@@ -68,6 +68,7 @@ function PhotoAlbum() {
 
       const imageSrcArr = await Promise.all(getImagePromises);
       setPhotos(imageSrcArr.filter((img) => img));
+      setLoading(false);
     } catch (error) {
       setError(error.message);
     }
@@ -88,7 +89,11 @@ function PhotoAlbum() {
 
     await upload.then((err, data) => {
       console.log(err);
-      swal({ text: "Photo uploaded successfully!", icon: "success" });
+      swal({ text: "Photo uploaded successfully!", icon: "success" }).then(
+        () => {
+          window.location.reload();
+        }
+      );
     });
   };
 
@@ -121,15 +126,23 @@ function PhotoAlbum() {
         </div>
 
         <MDBContainer className="mt-4 mb-2">
-          <MDBRow>
-            {photos?.map((photo, index) => (
-              <MDBCol md={4} key={index} style={{ marginBottom: "3%" }}>
-                <Card style={{ width: "100%" }}>
-                  <Card.Img variant="top" src={photo} />
-                </Card>
-              </MDBCol>
-            ))}
-          </MDBRow>
+          {loading ? (
+            <MDBRow style={{ placeContent: "center", marginTop: "3rem" }}>
+              <h3>
+                <strong>Loading ...</strong>
+              </h3>
+            </MDBRow>
+          ) : (
+            <MDBRow>
+              {photos?.map((photo, index) => (
+                <MDBCol md={4} key={index} style={{ marginBottom: "3%" }}>
+                  <Card style={{ width: "100%" }}>
+                    <Card.Img variant="top" src={photo} />
+                  </Card>
+                </MDBCol>
+              ))}
+            </MDBRow>
+          )}
         </MDBContainer>
       </div>
     </div>
